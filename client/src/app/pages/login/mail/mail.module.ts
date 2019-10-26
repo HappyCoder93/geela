@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SharedModule } from '../../shared/shared.module';
-import { LoginPage } from './login.page';
+import { SharedModule } from '../../../shared/shared.module';
+import { MailPage } from './mail.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginPage
+    component: MailPage
   }
 ];
 
@@ -16,8 +16,8 @@ const routes: Routes = [
     SharedModule
   ],
   declarations: [
-    LoginPage
+    MailPage
   ]
 })
 
-export class LoginPageModule { }
+export class MailPageModule { }

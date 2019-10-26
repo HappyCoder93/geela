@@ -7,6 +7,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   },
   {
+    path: 'signup',
+    loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupPageModule)
+  },
+  {
+    path: 'login/email',
+    loadChildren: () => import('./pages/login/mail/mail.module').then(m => m.MailPageModule)
+  },
+  {
    // wildcard
     path: '**',
     redirectTo: 'login',

@@ -74,4 +74,33 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** individual colors **/
+  --ion-color-primTxtColor: #292929;
+  --ion-color-primTxtColor-rgb: 41,41,41;
+  --ion-color-primTxtColor-contrast: #ffffff;
+  --ion-color-primTxtColor-contrast-rgb: 255,255,255;
+  --ion-color-primTxtColor-shade: #242424;
+  --ion-color-primTxtColor-tint: #3e3e3e;
+
+  --ion-color-google: #D0021B;
+  --ion-color-google-rgb: 208,2,27;
+  --ion-color-google-contrast: #ffffff;
+  --ion-color-google-contrast-rgb: 255,255,255;
+  --ion-color-google-shade: #b70218;
+  --ion-color-google-tint: #d51b32;
+
+  --ion-color-facebook: #3B589E;
+  --ion-color-facebook-rgb: 59,88,158;
+  --ion-color-facebook-contrast: #ffffff;
+  --ion-color-facebook-contrast-rgb: 255,255,255;
+  --ion-color-facebook-shade: #344d8b;
+  --ion-color-facebook-tint: #4f69a8;
+
+  --ion-color-email: #0191B2;
+  --ion-color-email-rgb: 1,145,178;
+  --ion-color-email-contrast: #ffffff;
+  --ion-color-email-contrast-rgb: 255,255,255;
+  --ion-color-email-shade: #01809d;
+  --ion-color-email-tint: #1a9cba;
 }
