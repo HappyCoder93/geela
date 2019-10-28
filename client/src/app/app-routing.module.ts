@@ -15,7 +15,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/mail/mail.module').then(m => m.MailPageModule)
   },
   {
-   // wildcard
+    path: 'menu',
+    loadChildren: () => import('./pages/menu/menu.module').then(m => m.MenuPageModule)
+  },
+  {
+   // wildcard (invalid URL redirects to login)
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full'

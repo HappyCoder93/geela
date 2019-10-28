@@ -1,1 +1,23 @@
 <!-- mail.page.html -->
+
+<!-- template of mail.page -->
+<ion-content class="ion-padding">
+    <div class="outer-container">
+        <div class="header-container">
+
+        </div>
+        <div class="content-container">
+            <div class="form-container">
+                <form>
+                    <ion-item lines="none" [style.color]="color">
+                        <ion-input (ionChange)="color = null" type="email" placeholder="Email" [(ngModel)]="user.email" name="email"></ion-input>
+                    </ion-item>
+                    <ion-item lines="none" [style.color]="color">
+                        <ion-input (ionChange)="color = null" type="password" placeholder="Password" [(ngModel)]="user.password" name="pawssword"></ion-input>
+                    </ion-item>
+                    <ion-button expand="block" (click)="login(user)">{{ btnText }}</ion-button>
+                </form>
+            </div>
+        </div>
+    </div>
+</ion-content>
