@@ -1,13 +1,12 @@
 /* style of login.page */
 
 .outer-container {
-
-    .header-container {
-        margin-top: 10%;
-    }
+    display: flex;
+    align-items: center;
+    height: 100%;
 
     .content-container {
-        margin-top: 10%;
+        width: 100%;
         
         .button-container {
             display: block;
@@ -59,8 +58,6 @@
 
             p {
                 margin-top: 10%;
-                font-size: 16px;
-                color: #202020;
             }
         }
     }

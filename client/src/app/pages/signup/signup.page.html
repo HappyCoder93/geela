@@ -1,1 +1,22 @@
 <!-- signup.page.html -->
+
+<ion-content class="ion-padding">
+    <div class="outer-container">
+        <div class="content-container">
+            <div class="header-container">
+
+            </div>
+            <div class="form-container">
+                <form>
+                    <ion-item lines="none" [style.color]="color">
+                        <ion-input (ionChange)="color = null" type="email" placeholder="Email" [(ngModel)]="user.email" name="email"></ion-input>
+                    </ion-item>
+                    <ion-item lines="none" [style.color]="color">
+                        <ion-input (ionChange)="color = null" type="password" placeholder="Password" [(ngModel)]="user.password" name="password"></ion-input>
+                    </ion-item>
+                    <ion-button expand="block" (click)="signUp(user)">{{ btnText }}</ion-button>
+                </form>
+            </div>
+        </div>
+    </div>
+</ion-content>

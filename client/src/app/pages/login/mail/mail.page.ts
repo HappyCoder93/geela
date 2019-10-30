@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../shared/models/user';
 import { AuthenticationService } from '../../../shared/services/authentication.service';
-import { ToastController } from '@ionic/angular';
+import { ToastService } from '../../../shared/services/toast.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,7 +20,7 @@ export class MailPage implements OnInit {
     password: ""
   }
 
-  constructor(private authService: AuthenticationService, public toastController: ToastController, private router: Router) { }
+  constructor(private authService: AuthenticationService, public toastService: ToastService, private router: Router) { }
 
   ngOnInit() { }
 
@@ -40,13 +40,7 @@ export class MailPage implements OnInit {
      });
   }
 
-  async toastMessage() {
-    const toast = await this.toastController.create({
-      position: 'bottom',
-      message: 'Email and password required',
-      duration: 1000 // length of toast is 1000 milliseconds (1 second)
-    });
-
-    toast.present();
+  toastMessage() {
+    this.toastService.emailPasswordToast();
   }
 }

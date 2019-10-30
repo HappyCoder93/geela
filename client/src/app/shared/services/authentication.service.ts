@@ -10,6 +10,7 @@ import { User } from '../models/User';
 
 export class AuthenticationService {
   public isValidLogin: boolean;
+  public isValidSignUp: boolean;
 
   constructor(private afAuth: AngularFireAuth) { }
 
@@ -26,5 +27,18 @@ export class AuthenticationService {
         console.log(err);
         this.isValidLogin = false;
       });
+  }
+
+  // method to sign up with email and password
+  async emailSignUp(user: User) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
+      .then(res => {
+        console.log("Sign Up successful!");
+        this.isValidSignUp = true;
+      })
+      .catch(err => {
+        console.log(err);
+        this.isValidSignUp = false;
+      })
   }
 }
