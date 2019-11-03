@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../shared/models/User';
+import { SignUp } from '../../shared/models/SignUp';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../../shared/services/authentication.service';
 import { ToastService } from '../../shared/services/toast.service';
 
@@ -11,29 +12,35 @@ import { ToastService } from '../../shared/services/toast.service';
 
 export class SignupPage implements OnInit {
   public btnText: string = "Sign Up";
-  public color: string = 'primTxtColor';
+  public color: string = "primTxtColor";
+  public retypePassword: string;
 
   // object user with properties email and password
-  public user: User = {
+  public user: SignUp = {
     email: "",
-    password: ""
+    password: "",
+    retypePassword: ""
   }
 
-  constructor(private authService: AuthenticationService, private toastService: ToastService) { }
+  constructor(private router: Router, private authService: AuthenticationService, private toastService: ToastService) { }
 
   ngOnInit() { }
 
-
-  signUp(user: User) {
+  signUp(user: SignUp) {    
     this.authService.emailSignUp(user).then(() => {
-      if(user.email == "" || user.password =="") {
+      if(user.email == "" || user.password == "" || user.retypePassword == "") {
         this.toastService.emailPasswordToast();
       }
-      else if(!this.authService.isValidSignUp){
+      else if(!this.authService.isValidSignUp) {
         this.color = 'red'; // set text color of item red, if email password combination is not valid (isValidSignUp = false)
       }
       console.log(this.authService.isValidSignUp);
-    })
+    });
+  }
+
+  // go to login (URL: /login/email)
+  goToEmailLogin() {
+    this.router.navigateByUrl("/login/email");
   }
 
   toastMessage() {

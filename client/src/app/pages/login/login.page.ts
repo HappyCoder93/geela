@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 
 export class LoginPage implements OnInit {
+  
   public buttons = [
     {
       title: 'Google',
@@ -31,10 +32,12 @@ export class LoginPage implements OnInit {
 
   ngOnInit() { }
 
+  // go to page signup (URL: /signup)
   goToSignUp() {
-    this.router.navigateByUrl('/signup');
+    this.router.navigateByUrl("/signup");
   }
 
+  // go to page login (URL: /login)
   goToLogin(url: string) {
     this.router.navigateByUrl(url);
   }

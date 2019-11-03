@@ -1,4 +1,4 @@
-// The shared.module.ts contains all the required modules which are used in each page.
+/* The shared.module.ts contains all the required modules which are used in each page. */
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';

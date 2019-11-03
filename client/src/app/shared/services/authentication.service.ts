@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from '../models/User';
+import { SignUp } from '../models/SignUp';
 
 // The authentication.service.ts contains the Firebase methods for authentication (Google, Facebook & Email).
 
@@ -30,9 +31,13 @@ export class AuthenticationService {
   }
 
   // method to sign up with email and password
-  async emailSignUp(user: User) {
-    return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
-      .then(res => {
+  async emailSignUp(user: SignUp) {
+    if(user.retypePassword !== user.password) {
+      return false;
+    }
+    else {
+      return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
+      .then(() => {
         console.log("Sign Up successful!");
         this.isValidSignUp = true;
       })
@@ -40,5 +45,6 @@ export class AuthenticationService {
         console.log(err);
         this.isValidSignUp = false;
       })
+    }
   }
 }

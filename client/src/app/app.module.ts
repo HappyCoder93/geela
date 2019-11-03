@@ -10,7 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 // import AngularFireModule and environment.ts (configuration)
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+
+// import AngularFireAuthModule for authentication (login, signup)
 import { AngularFireAuthModule } from '@angular/fire/auth';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     IonicModule.forRoot(), 
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -37,3 +40,5 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 })
 
 export class AppModule { }
+
+

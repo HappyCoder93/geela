@@ -44,15 +44,12 @@ ion-content {
 
             .password-container {
                 text-align: center;
+                color: var(--ion-color-secTxtColor);
 
                 ion-grid {
 
                     ion-row {
                         margin-top: 10%;
-
-                        span {
-                            color: var(--ion-color-secTxtColor);
-                        }
 
                         hr {
                             width: 90%;
@@ -63,7 +60,6 @@ ion-content {
 
                 p {
                     margin-top: 10%;
-                    color: var(--ion-color-secTxtColor);
                 }
             }
         }
