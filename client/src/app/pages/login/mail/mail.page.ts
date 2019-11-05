@@ -43,4 +43,9 @@ export class MailPage implements OnInit {
   toastMessage() {
     this.toastService.emailPasswordToast();
   }
+
+  // go to signup (URL: /signup)
+  goToSignup() {
+    this.router.navigateByUrl("/signup");
+  }
 }

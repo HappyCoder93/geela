@@ -41,4 +41,12 @@ ion-toast {
     opacity: 0.95;
 }
 
+.signup-alert {
+    text-align: center;
+    
+    span {
+        color: var(--ion-color-signup);
+    }
+}
+
 

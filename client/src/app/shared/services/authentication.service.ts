@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { ToastService } from './toast.service';
 import { User } from '../models/User';
 import { SignUp } from '../models/SignUp';
 
@@ -13,7 +14,7 @@ export class AuthenticationService {
   public isValidLogin: boolean;
   public isValidSignUp: boolean;
 
-  constructor(private afAuth: AngularFireAuth) { }
+  constructor(private afAuth: AngularFireAuth, private toastService: ToastService) { }
 
   // method to sign in with email and password
   async emailLogin(user: User) {
@@ -26,6 +27,7 @@ export class AuthenticationService {
       })
       .catch(err => {
         console.log(err);
+        this.toastService.userNotExists(); // user does not exists
         this.isValidLogin = false;
       });
   }
@@ -33,6 +35,7 @@ export class AuthenticationService {
   // method to sign up with email and password
   async emailSignUp(user: SignUp) {
     if(user.retypePassword !== user.password) {
+      this.toastService.unequalPasswords(); // password and retype password are not equal
       return false;
     }
     else {

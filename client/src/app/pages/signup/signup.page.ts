@@ -3,6 +3,7 @@ import { SignUp } from '../../shared/models/SignUp';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../shared/services/authentication.service';
 import { ToastService } from '../../shared/services/toast.service';
+import { AlertService } from '../../shared/services/alert.service';
 
 @Component({
   selector: 'app-signup',
@@ -22,7 +23,12 @@ export class SignupPage implements OnInit {
     retypePassword: ""
   }
 
-  constructor(private router: Router, private authService: AuthenticationService, private toastService: ToastService) { }
+  constructor(
+      private router: Router, 
+      private authService: AuthenticationService, 
+      private toastService: ToastService,
+      private alertService: AlertService
+    ) { }
 
   ngOnInit() { }
 
@@ -34,7 +40,10 @@ export class SignupPage implements OnInit {
       else if(!this.authService.isValidSignUp) {
         this.color = 'red'; // set text color of item red, if email password combination is not valid (isValidSignUp = false)
       }
-      console.log(this.authService.isValidSignUp);
+      else {
+        // signup successful
+        this.alertService.signupSuccessAlert();
+      }
     });
   }
 
