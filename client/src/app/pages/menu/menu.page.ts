@@ -7,6 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class MenuPage implements OnInit {
+  public title: string = "Menu";
+
+  public pages = [
+    { 
+      title: 'Home',
+      url: '/menu/home',
+      icon: 'home'
+    }
+  ]
 
   constructor() { }
 

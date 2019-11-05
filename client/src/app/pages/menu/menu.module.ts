@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { MenuPage } from './menu.page';
 
+/* The menu.module.ts is used for child-routing between the pages within the array routes */
+
 const routes: Routes = [
   {
     path: '',
@@ -12,6 +14,10 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+      },
+      {
+        path: 'tab',
+        loadChildren: () => import('./tab/tab.module').then(m => m.TabPageModule)
       },
       {
         path: '**',
