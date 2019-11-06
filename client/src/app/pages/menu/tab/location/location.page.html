@@ -1,0 +1,24 @@
+<!-- location.page.html -->
+
+<!-- instance of toolbar.component -->
+<app-toolbar></app-toolbar>
+
+<!-- template of location.page -->
+<ion-content *ngIf="locations$ | async as items" class="ion-padding">
+    <div class="header-container">
+        <h2>Location</h2>
+    </div>
+    <div class="content-container">
+        <!-- grid-layout -->
+        <ion-grid>
+            <ion-row>
+                <ion-col *ngFor="let item of items" size="6">
+                    <ion-card button="true">
+                        <img [src]="item.image"/>
+                        <ion-card-title>{{ item.name }}</ion-card-title>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>

@@ -1,0 +1,72 @@
+/* style of login.page */
+
+.outer-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    .content-container {
+        width: 100%;
+
+        .header-container {
+            margin-bottom: 5%;
+        }
+        
+        .button-container {
+            display: block;
+            margin: 0 auto;
+            width: 80%;
+
+            ion-button {
+                margin-bottom: 16px;
+                height: 50px;
+                text-transform: none;
+
+                ion-icon {
+                    position: absolute;
+                    left: 24px;
+                }
+            }
+
+            .btn-google {
+                --background: var(--ion-color-google);
+                --border-radius: 32px;
+            }   
+
+            .btn-facebook {
+                --background: var(--ion-color-facebook);
+                --border-radius: 32px;
+            }
+
+            .btn-email {
+                --background: var(--ion-color-email);
+                --border-radius: 32px;
+            }
+        }
+
+        .signup-container {
+            text-align: center;
+
+            ion-grid {
+
+                ion-row {
+                    margin-top: 10%;
+
+                    hr {
+                        width: 90%;
+                        background-color: #e0e0e0;
+                    }
+
+                    span {
+                        opacity: 0.9;
+                        color: #292929;
+                    }
+                }
+            }
+
+            p {
+                margin-top: 8%;
+            }
+        }
+    }
+}

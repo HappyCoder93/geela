@@ -1,0 +1,12 @@
+/* style of tab.page */
+
+ion-tabs {
+
+    ion-tab-bar {
+
+        ion-tab-button {
+            --color: #cccccc;
+            --color-selected: var(--ion-color-email);
+        }
+    }
+}

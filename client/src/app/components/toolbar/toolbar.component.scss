@@ -1,0 +1,12 @@
+/* style of toolbar.component */
+
+ion-header {
+
+    ion-toolbar {
+        --background: var(--ion-color-toolbar);
+
+        ion-menu-button {
+            --color: var(--ion-color-secTxtColor);
+        }
+    }
+}
