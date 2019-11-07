@@ -27,7 +27,6 @@ export class AuthenticationService {
       })
       .catch(err => {
         console.log(err);
-        this.toastService.userNotExists(); // user does not exists
         this.isValidLogin = false;
       });
   }

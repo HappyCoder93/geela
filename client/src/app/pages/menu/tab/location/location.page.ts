@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 })
 
 export class LocationPage implements OnInit {
+  public title: string = "Location";
   public locations$: Observable<Location[]>;
 
   constructor(private locationService: LocationService) { }

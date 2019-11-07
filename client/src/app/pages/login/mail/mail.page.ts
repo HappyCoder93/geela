@@ -28,20 +28,17 @@ export class MailPage implements OnInit {
   login(user: User) {
      this.authService.emailLogin(user).then(() => {
         if(user.email == "" || user.password == "") {
-          this.toastMessage();  // show toast message, if email or password field is empty
+          this.toastService.emailPasswordToast();  // show toast message, if email or password field is empty
         }
         else if(!this.authService.isValidLogin) {
           this.color = 'red'  // set text color of item red, if email password combination is not valid (isValidLogin = false)
+          this.toastService.userNotExists();
         }
         else {
           this.router.navigateByUrl("menu");  // if login is valid, user will be directed to home
         }
         console.log(this.authService.isValidLogin);
      });
-  }
-
-  toastMessage() {
-    this.toastService.emailPasswordToast();
   }
 
   // go to signup (URL: /signup)

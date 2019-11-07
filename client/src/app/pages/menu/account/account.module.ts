@@ -1,27 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '../../../shared/shared.module';
-import { TabPage } from './tab.page';
+import { AccountPage } from './account.page';
 
 /* The tab.module.ts is used for child-routing between the pages within the array of routes */
 
 const routes: Routes = [
   {
     path: '',
-    component: TabPage,
+    component: AccountPage,
     children: [
       {
-        path: 'location',
-        loadChildren: () => import('./location/location.module').then(m => m.LocationPageModule)
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
       },
       {
-        path: 'venue',
-        loadChildren: () => import('./venue/venue.module').then(m => m.VenuePageModule)
+        path: 'settings',
+        loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule)
       },
       {
-        // wildcard
         path: '',
-        redirectTo: 'location',
+        redirectTo: 'profile',
         pathMatch: 'full'
       }
     ]
@@ -34,8 +33,8 @@ const routes: Routes = [
     SharedModule
   ],
   declarations: [
-    TabPage
+    AccountPage
   ]
 })
 
-export class TabPageModule { }
+export class AccountPageModule { }

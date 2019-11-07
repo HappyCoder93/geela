@@ -8,9 +8,10 @@ ion-content {
     }
 
     ion-list {
+        padding: 0;
 
         ion-item {
-            padding: 8px;
+            padding: 8px 12px 8px 12px;
         }
     }
 }

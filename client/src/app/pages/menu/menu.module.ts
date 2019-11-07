@@ -16,10 +16,15 @@ const routes: Routes = [
         loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
       },
       {
+        path: 'account',
+        loadChildren: () => import('./account/account.module').then(m => m.AccountPageModule)
+      },
+      {
         path: 'tab',
         loadChildren: () => import('./tab/tab.module').then(m => m.TabPageModule)
       },
       {
+        // wildcard
         path: '**',
         redirectTo: 'home',
         pathMatch: 'full'

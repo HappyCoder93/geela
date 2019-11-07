@@ -1,0 +1,22 @@
+/* style of profile.page */ 
+
+.header-container {
+    margin-top: 5%;
+    text-align: center;
+
+    img {
+        display: block;
+        margin: 0 auto;
+        width: 152px;
+        border-radius: 50%;
+    }
+}
+
+ion-fab {
+    margin-right: 2.5%;
+    margin-bottom: 2.5%;
+   
+    ion-fab-button {
+        --background: var(--ion-color-email);
+    }
+}
