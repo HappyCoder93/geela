@@ -20,8 +20,8 @@ const routes: Routes = [
         loadChildren: () => import('./account/account.module').then(m => m.AccountPageModule)
       },
       {
-        path: 'tab',
-        loadChildren: () => import('./tab/tab.module').then(m => m.TabPageModule)
+        path: 'order',
+        loadChildren: () => import('./order/order.module').then(m => m.OrderPageModule)
       },
       {
         // wildcard

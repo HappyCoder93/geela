@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '../../../shared/shared.module';
-import { TabPage } from './tab.page';
+import { OrderPage } from './order.page';
 
-/* The tab.module.ts is used for child-routing between the pages within the array of routes */
+/* The order.module.ts is used for child-routing between the pages within the array routes */
 
 const routes: Routes = [
   {
     path: '',
-    component: TabPage,
+    component: OrderPage,
     children: [
       {
         path: 'location',
@@ -20,7 +20,7 @@ const routes: Routes = [
       },
       {
         // wildcard
-        path: '',
+        path: '**',
         redirectTo: 'location',
         pathMatch: 'full'
       }
@@ -34,8 +34,8 @@ const routes: Routes = [
     SharedModule
   ],
   declarations: [
-    TabPage
+    OrderPage
   ]
 })
 
-export class TabPageModule { }
+export class OrderPageModule { }

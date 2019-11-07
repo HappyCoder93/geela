@@ -25,7 +25,8 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full'
-  }
+  },
+  { path: 'order', loadChildren: './pages/menu/order/order.module#OrderPageModule' }
 ];
 
 @NgModule({

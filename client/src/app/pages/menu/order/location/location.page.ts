@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Location } from '../../../../shared/models/Location';
 import { LocationService } from '../../../../shared/services/location.service';
 import { Observable } from 'rxjs';
-import { TabService } from '../../../../shared/services/tab.service';
 
 @Component({
   selector: 'app-location',
@@ -15,7 +14,7 @@ export class LocationPage implements OnInit {
   public title: string = "Location";
   public locations$: Observable<Location[]>;
 
-  constructor(private router: Router, private tabService: TabService, private locationService: LocationService) { }
+  constructor(private router: Router, private locationService: LocationService) { }
 
   ngOnInit() {
     this.getLocations();
@@ -27,6 +26,6 @@ export class LocationPage implements OnInit {
 
   // go to page venue
   goToVenue() {
-    this.router.navigateByUrl('/menu/tab/venue');
+    this.router.navigateByUrl('/menu/order/venue');
   }
 }
