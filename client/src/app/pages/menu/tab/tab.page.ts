@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tab.page.scss'],
 })
 
-export class TabPage implements OnInit {
+export class TabPage implements OnInit {  
 
   constructor() { }
 
