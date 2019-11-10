@@ -116,13 +116,7 @@ ion-content {
                 margin-top: 5% !important;
 
                 ion-grid {
-                    ion-row {
-                        ion-col {
-                            hr {
-                                width: 75% !important;
-                            }
-                        }
-                    }
+                    display: none;
                 }
 
                 p {

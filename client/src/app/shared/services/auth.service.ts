@@ -6,6 +6,7 @@ import { LoginUser } from '../models/LoginUser';
 import { SignupUser } from '../models/SignupUser';
 import { Observable } from 'rxjs';
 import { User } from 'firebase';
+import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,11 @@ import { User } from 'firebase';
 
 export class AuthService {
   public user: Observable<User>
+  public color: string;
 
   public errCode = {
-    invalidEmail: 'auth/invalid-email'
+    invalidEmail: 'auth/invalid-email',
+    userNotFound: 'auth/user-not-found'
   }
 
   constructor(private auth: AngularFireAuth, private toastService: ToastService, private router: Router) { 
@@ -34,6 +37,12 @@ export class AuthService {
 
         if(err.code == this.errCode.invalidEmail) {
           this.toastService.invalidSignupLogin('signup');
+          this.color = 'red';
+
+          // check if password and retype password are equal
+          if(user.password != user.retypePassword) {
+            this.toastService.invalidSignupLogin('password and retype password');
+          }
         }
       });
   }
@@ -43,18 +52,28 @@ export class AuthService {
     await this.auth.auth.signInWithEmailAndPassword(user.email, user.password)
       .then(res => {
         if(res.user) {
-          this.router.navigateByUrl('/menu');
+          this.router.navigateByUrl('/menu/home');
         }
       }).catch(err => {
         console.log(err);
 
         if(err.code == this.errCode.invalidEmail) {
           this.toastService.invalidSignupLogin('login');
+          this.color = 'red';
+        }
+        else if(err.code == this.errCode.userNotFound) {
+          this.toastService.userNotFound();
+          this.color = 'red';
         }
       });
   }
 
-  // getUserData returns an Observable of User (AngularFireAuth.user)
+  // signInWithGoogle (login in with a regular Google Account)
+  async loginWithGoogle() {
+    this.auth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider);
+  }
+
+  // getUserData returns an Observable of type User (AngularFireAuth.user)
   getUserData(): Observable<User> {
     return this.auth.user;
   }

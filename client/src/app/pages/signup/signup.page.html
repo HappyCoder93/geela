@@ -10,17 +10,17 @@
             <div class="form-container">
                 <div class="item-email">
                     <ion-item lines="none" class="ion-no-padding">
-                        <ion-input inputmode="email" type="email" pattern="email" placeholder="your@email.com" [(ngModel)]="user.email" name="email" required="true"></ion-input>
+                        <ion-input [ngStyle]="{'color':  color}" type="email" placeholder="your@email.com" [(ngModel)]="user.email" name="email" (ionChange)="color = null"></ion-input>
                     </ion-item> 
                 </div>
                 <div class="item-password">
                     <ion-item lines="none" class="ion-no-padding">
-                        <ion-input inputmode="password" type="password" pattern="password" placeholder="Password" [(ngModel)]="user.password" name="password" required="true"></ion-input>
+                        <ion-input [ngStyle]="{'color':  color}" type="password" placeholder="Password" [(ngModel)]="user.password" name="password" (ionChange)="color = null"></ion-input>
                     </ion-item>
                 </div>
                 <div class="item-retype-password">
                     <ion-item lines="none" class="ion-no-padding">
-                        <ion-input inputmode="password" type="password" pattern="password" placeholder="Retype password" [(ngModel)]="user.retypePassword" name="retypePassword" required="true"></ion-input>
+                        <ion-input [ngStyle]="{'color':  color}" type="password" placeholder="Retype password" [(ngModel)]="user.retypePassword" name="retypePassword" (ionChange)="color = null"></ion-input>
                     </ion-item>
                 </div>
                 <ion-button expand="block" (click)="signup(user)">{{ btnText }}</ion-button>

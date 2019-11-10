@@ -4,5 +4,16 @@
 
 <!-- template of home.page -->
 <ion-content class="ion-padding">
-    
+    <div class="content-container">
+        <div class="header-container">
+            <!--  personal greeting here -->
+            <h1>Welcome, Avatar!</h1>
+            <div class="button-container" *ngFor="let button of buttons">
+                <ion-button expand="block" [routerLink]="button.url">
+                    <ion-icon [name]="button.icon"></ion-icon>
+                    {{ button.title }}
+                </ion-button>
+            </div>
+        </div>
+    </div>
 </ion-content>

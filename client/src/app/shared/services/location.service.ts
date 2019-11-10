@@ -12,12 +12,12 @@ export class LocationService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  // get all the locations from Firestore (returns an observable of Location[])
+  // get all the locations from Firestore (returns an observable of type Location[])
   getLocations(): Observable<Location[]> {
     return this.firestore.collection<Location>('location').valueChanges();
   }
 
-  // get all the venues from Firestore (returns an observable of Venue[])
+  // get all the venues from Firestore (returns an observable of type Venue[])
   getVenues(): Observable<Venue[]> {
     return this.firestore.collection<Venue>('venue').valueChanges();
   }

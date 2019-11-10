@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 
 export class SignupPage implements OnInit {
   public btnText: string = "Sign Up";
+  public color: string = 'null';
 
   public user: SignupUser = {
     email: "",
@@ -23,7 +24,9 @@ export class SignupPage implements OnInit {
   ngOnInit() { }
 
   signup(user: SignupUser) {
-    this.authService.signupWithEmail(user);
+    this.authService.signupWithEmail(user).then(() => {
+      this.color = this.authService.color;
+    });
   }
 
   goToLoginPage() {

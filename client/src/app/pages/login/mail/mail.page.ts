@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 
 export class MailPage implements OnInit {
   public btnText: string = "Login";
+  public color: string = 'null';
 
   public user: LoginUser = {
     email: "",
@@ -22,7 +23,9 @@ export class MailPage implements OnInit {
   ngOnInit() { }
 
   login(user: LoginUser) {
-    this.authService.loginWithEmail(user);
+    this.authService.loginWithEmail(user).then(() => {
+      this.color = this.authService.color;
+    });
   }
 
   goToSignupPage() {
