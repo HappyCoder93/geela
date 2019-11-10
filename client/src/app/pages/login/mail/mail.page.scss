@@ -1,0 +1,134 @@
+/* style of mail.page */
+
+ion-content {
+    --background: rgb(1,166,203);
+    --background: -moz-linear-gradient(180deg, rgba(1,166,203,1) 50%, rgba(1,124,153,1) 75%, rgba(1,104,127,1) 100%);
+    --background: -webkit-linear-gradient(180deg, rgba(1,166,203,1) 50%, rgba(1,124,153,1) 75%, rgba(1,104,127,1) 100%);
+    --background: linear-gradient(180deg, rgba(1,166,203,1) 50%, rgba(1,124,153,1) 75%, rgba(1,104,127,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#01a6cb",endColorstr="#01687f",GradientType=1);
+
+    .wrapper-container {
+        display: flex;
+        height: 100%;
+        align-items: center;
+
+        .content-container {
+            display: block;
+            width: 100%;
+
+            .header-container {
+                
+                img {
+                    display: block;
+                    margin: 0 auto;
+                    width: 296px;
+                }
+            }
+
+            .form-container {
+                display: block;
+                margin: 0 auto;
+                margin-top: 10%;
+                width: 75%;
+
+                .item-email {
+                    margin-bottom: 14px;
+                    box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12);
+                    border-radius: 32px;
+
+                    ion-item {
+                        --ion-safe-area-right: 0;
+                        --ion-safe-area-left: 0;
+                        --border-radius: 32px;
+                     
+                        ion-input {
+                            text-align: center;
+                        }
+                    }
+                }
+
+                .item-password {
+                    margin-bottom: 14px;
+                    box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12);
+                    border-radius: 32px;
+
+                    ion-item {
+                        --ion-safe-area-right: 0;
+                        --ion-safe-area-left: 0;
+                        --border-radius: 32px;
+                     
+                        ion-input {
+                            text-align: center;
+                        }
+                    }
+                }
+
+                ion-button {
+                    height: 46px;
+                    text-transform: none;
+                    --border-radius: 32px;
+                    --background: var(--ion-color-email);
+                }
+            }
+
+            .signup-container {
+                margin-top: 10%;
+                text-align: center;
+    
+                ion-grid {
+                    ion-row {
+
+                        span {
+                            color: var(--ion-color-secTxtColor);
+                        }
+    
+                        hr {
+                            opacity: 0.25;
+                            width: 90%;
+                            background-color: #ededed;
+                        }
+                    }
+                }
+    
+                p {
+                    margin-top: 5%;
+                    color: var(--ion-color-secTxtColor);
+                }
+            }
+        }
+    }
+}
+
+/* set Media Queries for different display sizes and orientation of landscape */
+@media screen and(orientation: landscape) {
+    .wrapper-container {
+        .content-container {
+            .header-container {
+                display: none !important;
+            }
+
+            .form-container {
+                margin-top: 2.5% !important;
+                width: 50% !important;
+            }
+
+            .signup-container {
+                margin-top: 5% !important;
+
+                ion-grid {
+                    ion-row {
+                        ion-col {
+                            hr {
+                                width: 75% !important;
+                            }
+                        }
+                    }
+                }
+
+                p {
+                    margin-top: 2.5% !important;
+                }
+            } 
+        }
+    }
+}

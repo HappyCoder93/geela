@@ -1,0 +1,13 @@
+<!-- venue.page.html -->
+
+<app-toolbar></app-toolbar>
+
+<!-- template of venue.page -->
+<ion-content *ngIf="venues$ | async as items" class="ion-padding">
+    <div class="header-container">
+        <h1>{{ title }}</h1>
+    </div>
+    <div class="content-container">
+        <!-- this is were your code goes -->
+    </div>
+</ion-content>

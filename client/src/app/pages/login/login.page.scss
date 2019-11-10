@@ -1,0 +1,120 @@
+/* syle of login.page */
+
+ion-content {
+    --background: rgb(255,255,255);
+    --background: -moz-linear-gradient(180deg, rgba(255,255,255,1) 60%, rgba(245,245,245,1) 75%, rgba(235,235,235,1) 100%);
+    --background: -webkit-linear-gradient(180deg, rgba(255,255,255,1) 60%, rgba(245,245,245,1) 75%, rgba(235,235,235,1) 100%);
+    --background: linear-gradient(180deg, rgba(255,255,255,1) 60%, rgba(245,245,245,1) 75%, rgba(235,235,235,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ebebeb",GradientType=1);
+
+    .wrapper-container {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        
+        .content-container {
+            display: block;
+            width: 100%;
+    
+            .header-container {
+                margin-bottom: 10%;
+    
+                img {
+                    display: block;
+                    margin: 0 auto;
+                    width: 392px;
+                }
+            }
+    
+            .button-container {
+                display: block;
+                margin: 0 auto;
+                width: 80%;
+    
+                ion-button {
+                    margin-bottom: 16px;
+                    height: 48px;
+                    text-transform: none;   
+                    --border-radius: 32px;
+                   
+                    ion-icon {
+                        position: absolute;
+                        left: 26px;
+                    }       
+                }
+    
+                .btn-google {
+                    --background: var(--ion-color-google);
+                }
+    
+                .btn-facebook {
+                    --background: var(--ion-color-facebook);
+                }
+    
+                .btn-email {
+                    --background: var(--ion-color-email);
+                }
+            }
+    
+            .signup-container {
+                margin-top: 10%;
+                text-align: center;
+    
+                ion-grid {
+                    ion-row {
+    
+                        hr {
+                            width: 90%;
+                            background-color: #e1e1e1;
+                        }
+                    }
+                }
+    
+                p {
+                    margin: 0 auto; 
+                    margin-top: 5%;
+                    color: #ec6d6e;
+                }
+            }
+        }   
+    }
+    
+    /* set Media Queries for different display sizes and orientation of smartphone */
+    @media screen and(orientation: landscape) {
+        .wrapper-container {
+            .content-container {
+                .header-container {
+                    margin-bottom: 2.5%;
+                }
+    
+                .button-container {
+                    width: 50%;
+    
+                    ion-button {
+                        margin-bottom: 14px;
+                        height: 42px;
+                    }
+                }
+    
+                .signup-container {
+                    margin-top: 2.5%;
+    
+                    ion-grid {
+                        ion-row {
+                            ion-col {
+                                hr {
+                                    width: 75%;
+                                }
+                            }
+                        }
+                    }
+    
+                    p {
+                        margin-top: 2%;
+                    }
+                }
+            }
+        }
+    }
+}
+

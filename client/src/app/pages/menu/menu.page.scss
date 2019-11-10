@@ -1,0 +1,16 @@
+/* style of menu.page */
+
+ion-content {
+    h1 {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    ion-list {
+        padding: 0;
+
+        ion-item {
+            padding: 8px 12px 8px 12px;
+        }
+    }
+}

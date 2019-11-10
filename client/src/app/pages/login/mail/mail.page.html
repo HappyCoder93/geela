@@ -1,0 +1,42 @@
+<!-- mail.page.html -->
+
+<!-- template of mail.page -->
+<ion-content class="ion-padding">
+    <div class="wrapper-container">
+        <div class="content-container">
+            <div class="header-container">
+                <img src="../../../../assets/icon/email.svg"/>
+            </div>
+            <div class="form-container">
+                <div class="item-email">
+                    <ion-item lines="none">
+                        <ion-input inputmode="email" type="email" pattern="email" placeholder="your@email.com" [(ngModel)]="user.email" name="email" required="true"></ion-input>
+                    </ion-item>
+                </div>
+                <div class="item-password">
+                    <ion-item lines="none" class="ion-no-padding">
+                        <ion-input inputmode="password" type="password" pattern="password" placeholder="Password" [(ngModel)]="user.password" name="password" required="true"></ion-input>
+                    </ion-item>
+                </div>
+                <ion-button expand="block" (click)="login(user)">{{ btnText }}</ion-button>
+            </div>
+            <div class="signup-container">
+                <!-- grid-layout -->
+                <ion-grid>
+                    <ion-row>
+                        <ion-col size="5">
+                            <hr> <!-- horizontal line -->
+                        </ion-col>
+                        <ion-col size="2">
+                            <span>or</span>
+                        </ion-col>
+                        <ion-col size="5">
+                            <hr> <!-- horizontal line -->
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                <p (click)="goToSignupPage()">Sign Up</p>
+            </div>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,32 @@
+/* style of location.page */
+
+ion-content {
+    .header-container {
+        text-align: center;
+
+        h1 {
+            font-size: 24px;
+        }
+    }
+
+    .content-container {
+        ion-grid {
+            padding: 8px 0px 0px 0px;
+
+            ion-row {
+                ion-col{
+                    padding: 0;
+
+                    ion-card {
+                        text-align: center;
+
+                        ion-card-title {
+                            padding: 8px;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
