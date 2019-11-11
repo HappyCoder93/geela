@@ -15,8 +15,7 @@ export class SignupPage implements OnInit {
 
   public user: SignupUser = {
     email: "",
-    password: "",
-    retypePassword: ""
+    password: ""
   };
 
   constructor(private authService: AuthService, private router: Router) { }

@@ -18,11 +18,6 @@
                         <ion-input [ngStyle]="{'color':  color}" type="password" placeholder="Password" [(ngModel)]="user.password" name="password" (ionChange)="color = null"></ion-input>
                     </ion-item>
                 </div>
-                <div class="item-retype-password">
-                    <ion-item lines="none" class="ion-no-padding">
-                        <ion-input [ngStyle]="{'color':  color}" type="password" placeholder="Retype password" [(ngModel)]="user.retypePassword" name="retypePassword" (ionChange)="color = null"></ion-input>
-                    </ion-item>
-                </div>
                 <ion-button expand="block" (click)="signup(user)">{{ btnText }}</ion-button>
             </div>
             <div class="login-container">

@@ -17,11 +17,10 @@ ion-content {
             width: 100%;
 
             .header-container {
-                
                 img {
                     display: block;
                     margin: 0 auto;
-                    width: 296px;
+                    width: 146px;
                 }
             }
 
@@ -62,28 +61,12 @@ ion-content {
                         }
                     }
                 }
-
-                .item-retype-password {
-                    margin-bottom: 14px;
-                    box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12);
-                    border-radius: 32px;
-
-                    ion-item {
-                        --ion-safe-area-right: 0;
-                        --ion-safe-area-left: 0;
-                        --border-radius: 32px;
-                     
-                        ion-input {
-                            text-align: center;
-                        }
-                    }
-                }
                 
                 ion-button {
                     height: 46px;
                     text-transform: none;
                     --border-radius: 32px;
-                    --background: var(--ion-color-email);
+                    --background: #01a6cb;
                 }
             }
 
@@ -93,15 +76,17 @@ ion-content {
     
                 ion-grid {
                     ion-row {
-
-                        span {
-                            color: var(--ion-color-secTxtColor);
-                        }
-    
-                        hr {
-                            opacity: 0.25;
-                            width: 90%;
-                            background-color: #ededed;
+                        ion-col {
+                            span {
+                                color: var(--ion-color-secTxtColor);
+                                font-weight: lighter;
+                            }
+        
+                            hr {
+                                opacity: 0.25;
+                                width: 90%;
+                                background-color: #ededed;
+                            }
                         }
                     }
                 }
@@ -120,11 +105,11 @@ ion-content {
     .wrapper-container {
         .content-container {
             .header-container {
-               display: none;
+                display: none;
             }
 
             .form-container {
-                margin-top: 2.5% !important;
+                margin-top: 0% !important;
                 width: 50% !important;
             }
 

@@ -41,3 +41,10 @@ ion-toast {
     --border-radius: 32px;
     --box-shadow: 0 1px 2px rgba(0,0,0,0.19), 0 0.5px 1px rgba(0,0,0,0.23);
 }
+
+/* set Media Queries for different display sizes and orientation of smartphone */
+@media screen and(orientation: landscape) {
+    ion-toast {
+        display: none;
+    }
+}

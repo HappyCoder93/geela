@@ -17,11 +17,10 @@ ion-content {
             width: 100%;
 
             .header-container {
-                
                 img {
                     display: block;
                     margin: 0 auto;
-                    width: 296px;
+                    width: 146px;
                 }
             }
 
@@ -67,7 +66,7 @@ ion-content {
                     height: 46px;
                     text-transform: none;
                     --border-radius: 32px;
-                    --background: var(--ion-color-email);
+                    --background: #01a6cb;
                 }
             }
 
@@ -77,15 +76,17 @@ ion-content {
     
                 ion-grid {
                     ion-row {
-
-                        span {
-                            color: var(--ion-color-secTxtColor);
-                        }
-    
-                        hr {
-                            opacity: 0.25;
-                            width: 90%;
-                            background-color: #ededed;
+                        ion-col {
+                            span {
+                                color: var(--ion-color-secTxtColor);
+                                font-weight: lighter;
+                            }
+        
+                            hr {
+                                opacity: 0.25;
+                                width: 90%;
+                                background-color: #ededed;
+                            }
                         }
                     }
                 }
@@ -104,11 +105,11 @@ ion-content {
     .wrapper-container {
         .content-container {
             .header-container {
-                display: none !important;
+                display: none;
             }
 
             .form-container {
-                margin-top: 2.5% !important;
+                margin-top: 2% !important;
                 width: 50% !important;
             }
 
@@ -116,7 +117,13 @@ ion-content {
                 margin-top: 5% !important;
 
                 ion-grid {
-                    display: none;
+                    ion-row {
+                        ion-col {
+                            hr {
+                                width: 75% !important;
+                            }
+                        }
+                    }
                 }
 
                 p {

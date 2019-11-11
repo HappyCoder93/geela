@@ -3,5 +3,4 @@
 export interface SignupUser {
     email: string;
     password: string;
-    retypePassword: string;
 }

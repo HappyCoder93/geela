@@ -16,9 +16,12 @@ export class AuthService {
   public user: Observable<User>
   public color: string;
 
+  // erro codes of createUserWithEmailAndPassword and signInWithEmailAndPassword
   public errCode = {
     invalidEmail: 'auth/invalid-email',
-    userNotFound: 'auth/user-not-found'
+    userNotFound: 'auth/user-not-found',
+    userAlreadyExists: 'auth/email-already-in-use',
+    weakPassword: 'auth/weak-password'
   }
 
   constructor(private auth: AngularFireAuth, private toastService: ToastService, private router: Router) { 
@@ -35,14 +38,14 @@ export class AuthService {
       }).catch(err => {
         console.log(err);
 
-        if(err.code == this.errCode.invalidEmail) {
+        if(err.code == this.errCode.invalidEmail || err.code == this.errCode.weakPassword) {
           this.toastService.invalidSignupLogin('signup');
           this.color = 'red';
+        }
 
-          // check if password and retype password are equal
-          if(user.password != user.retypePassword) {
-            this.toastService.invalidSignupLogin('password and retype password');
-          }
+        if(err.code == this.errCode.userAlreadyExists) {
+          this.toastService.userAlreadyExists();
+          this.color = 'red';
         }
       });
   }
