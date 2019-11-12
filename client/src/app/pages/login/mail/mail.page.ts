@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 export class MailPage implements OnInit {
   public btnText: string = "Login";
-  public color: string = 'null';
+  public color: string;
 
   public user: LoginUser = {
     email: "",
@@ -21,6 +21,13 @@ export class MailPage implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() { }
+
+  // lifecycle hook to clear the input fields and color after page transition
+  ionViewWillEnter() {
+    this.user.email = "";
+    this.user.password = "";
+    this.color = '#292929';
+  }
 
   login(user: LoginUser) {
     this.authService.loginWithEmail(user).then(() => {

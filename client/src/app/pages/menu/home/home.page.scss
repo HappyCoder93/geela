@@ -32,3 +32,16 @@ ion-content {
 }
 
 /* set Media Queries for different display sizes and orientation of smartphone */
+@media screen and(orientation: landscape) {
+    .content-container {
+        .header-container {
+            h1 {
+                margin-bottom: 5% !important;
+            }
+
+            .button-container {
+                width: 50% !important;
+            }
+        }
+    }
+}

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 export class SignupPage implements OnInit {
   public btnText: string = "Sign Up";
-  public color: string = 'null';
+  public color: string;
 
   public user: SignupUser = {
     email: "",
@@ -21,6 +21,13 @@ export class SignupPage implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() { }
+
+  // lifecycle hook to clear the input fields and color after page transition
+  ionViewWillEnter() {
+    this.user.email = "";
+    this.user.password = "";
+    this.color = '#292929';
+  }
 
   signup(user: SignupUser) {
     this.authService.signupWithEmail(user).then(() => {

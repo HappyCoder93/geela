@@ -33,20 +33,21 @@ export class AuthService {
     await this.auth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(res => {
         if(res.user) {
-
+          // if signup was successful - user will be forwarded to page profile
+          this.router.navigateByUrl('/menu/account/profile');
         }
       }).catch(err => {
         console.log(err);
 
         if(err.code == this.errCode.invalidEmail || err.code == this.errCode.weakPassword) {
           this.toastService.invalidSignupLogin('signup');
-          this.color = 'red';
+        }
+        else if(err.code == this.errCode.userAlreadyExists) {
+          this.toastService.userAlreadyExists();
         }
 
-        if(err.code == this.errCode.userAlreadyExists) {
-          this.toastService.userAlreadyExists();
-          this.color = 'red';
-        }
+        // set input color to red
+        this.color = 'red';
       });
   }
 
@@ -55,6 +56,7 @@ export class AuthService {
     await this.auth.auth.signInWithEmailAndPassword(user.email, user.password)
       .then(res => {
         if(res.user) {
+          // if login was successful - user will be forwarded to page home
           this.router.navigateByUrl('/menu/home');
         }
       }).catch(err => {
@@ -62,12 +64,13 @@ export class AuthService {
 
         if(err.code == this.errCode.invalidEmail) {
           this.toastService.invalidSignupLogin('login');
-          this.color = 'red';
         }
         else if(err.code == this.errCode.userNotFound) {
           this.toastService.userNotFound();
-          this.color = 'red';
         }
+
+        // set input color to red
+        this.color = 'red';
       });
   }
 

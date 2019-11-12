@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { MenuPage } from './menu.page';
@@ -19,6 +17,10 @@ const routes: Routes = [
       {
         path: 'order',
         loadChildren: () => import('./order/order.module').then(m => m.OrderPageModule)
+      },
+      {
+        path: 'account',
+        loadChildren: () => import('./account/account.module').then(m => m.AccountPageModule)
       },
       {
         // wildcard (invalid URL will trigger a redirect to page home)

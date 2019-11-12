@@ -15,6 +15,11 @@ export class MenuPage implements OnInit {
       title: 'Home',
       url: '/menu/home',
       icon: 'home'
+    },
+    {
+      title: 'Account',
+      url: '/menu/account',
+      icon: 'person'
     }
   ]
 
