@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import { SignupUser } from '../../shared/models/SignupUser';
 import { Router } from '@angular/router';
+import { Keyboard } from '@ionic-native/keyboard';
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +19,8 @@ export class SignupPage implements OnInit {
     password: ""
   };
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+ }
 
   ngOnInit() { }
 
