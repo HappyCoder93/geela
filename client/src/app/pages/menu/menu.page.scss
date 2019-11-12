@@ -16,3 +16,18 @@
         }
     }
 }
+
+/* set Media Queries for different display sizes and orientation of smartphone */
+@media screen and(orientation: landscape) {
+    .sidemenu {
+        h1 {
+            font-size: 21px;
+        }
+
+        ion-list {
+            ion-item {
+                padding: 5px 10px 5px 10px;
+            }
+        }
+    }
+}

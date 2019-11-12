@@ -3,3 +3,30 @@
 <app-toolbar></app-toolbar>
 
 <!-- template of profile.page -->
+<ion-content *ngIf="profile$ | async as item" class="ion-padding">
+    <div class="wrapper-container">
+        <div class="content-container">
+            <div class="header-container">
+                
+            </div>
+            <div class="form-container">
+                <div class="item-firstname">
+                    <ion-item lines="none" class="ion-no-padding">
+                        <ion-input type="text" [placeholder]="item.firstname" [(ngModel)]="profile.firstname" name="firstname"></ion-input>
+                    </ion-item>
+                </div>
+                <div class="item-lastname">
+                    <ion-item lines="none" class="ion-no-padding">
+                        <ion-input type="text" [placeholder]="item.lastname" [(ngModel)]="profile.lastname" name="lastname"></ion-input>
+                    </ion-item>
+                </div>
+                <ion-button expand="block">{{ btnSaveText }}</ion-button>
+            </div>
+            <ion-fab vertical="bottom" horizontal="end">
+                <ion-fab-button>
+                    <ion-icon name="camera"></ion-icon>
+                </ion-fab-button>
+            </ion-fab>
+        </div>
+    </div>
+</ion-content>

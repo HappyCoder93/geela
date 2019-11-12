@@ -1,1 +1,58 @@
 /* style of profile.page */
+
+.wrapper-container {
+    .content-container {
+        .form-container {
+            display: block;
+            margin: 0 auto;
+            width: 75%;
+
+            .item-firstname {
+                margin-bottom: 12px;
+                box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12);
+                border-radius: 32px;
+
+                ion-item {
+                    --ion-safe-area-right: 0;
+                    --ion-safe-area-left: 0;
+                    --border-radius: 32px;
+
+                    ion-input {
+                        text-align: center;
+                    }
+                }
+            }
+
+            .item-lastname {
+                margin-bottom: 12px;
+                box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12);
+                border-radius: 32px;
+
+                ion-item {
+                    --ion-safe-area-right: 0;
+                    --ion-safe-area-left: 0;
+                    --border-radius: 32px;
+
+                    ion-input {
+                        text-align: center;
+                    }
+                }
+            }
+
+            ion-button {
+                height: 46px;
+                text-transform: none;
+                --background: var(--ion-color-button);
+                --border-radius: 32px;
+            }
+        }
+
+        ion-fab {
+            ion-fab-button {
+                margin-right: 8px;
+                margin-bottom: 8px;
+                --background: var(--ion-color-primColor);
+            }
+        }
+    }
+}

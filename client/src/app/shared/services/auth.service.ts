@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { UserService } from '../../shared/services/user.service';
 import { ToastService } from './toast.service';
 import { Router } from '@angular/router';
 import { LoginUser } from '../models/LoginUser';
@@ -24,8 +25,13 @@ export class AuthService {
     weakPassword: 'auth/weak-password'
   }
 
-  constructor(private auth: AngularFireAuth, private toastService: ToastService, private router: Router) { 
-    this.user = this.auth.user;
+  constructor(
+      private auth: AngularFireAuth, 
+      private userService: UserService,
+      private toastService: ToastService, 
+      private router: Router
+    ) { 
+      this.user = this.auth.user;
   }
 
   // createUserWithEmailAndPassword
@@ -33,6 +39,9 @@ export class AuthService {
     await this.auth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(res => {
         if(res.user) {
+          // create a new profile document with id of authentication
+          this.userService.createProfile(res.user.uid);
+
           // if signup was successful - user will be forwarded to page profile
           this.router.navigateByUrl('/menu/account/profile');
         }
@@ -57,6 +66,7 @@ export class AuthService {
       .then(res => {
         if(res.user) {
           // if login was successful - user will be forwarded to page home
+          this.userService.createProfile(res.user.uid);
           this.router.navigateByUrl('/menu/home');
         }
       }).catch(err => {

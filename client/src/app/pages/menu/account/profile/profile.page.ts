@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Profile } from '../../../../shared/models/Profile';
+import { UserService } from '../../../../shared/services/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -7,8 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ProfilePage implements OnInit {
+  public btnSaveText: string = "Save";
+  public profile$: Observable<Profile>;
 
-  constructor() { }
+  public profile: Profile = {
+    firstname: "",
+    lastname: ""
+  }
 
+  constructor(private userService: UserService) {
+    this.getProfile();
+  }
+  
   ngOnInit() { }
+
+  ionViewWillEnter() {
+    this.getProfile();
+  }
+
+  getProfile() {
+    this.profile$ = this.userService.getProfile();
+  }
 }
