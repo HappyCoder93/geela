@@ -1,4 +1,4 @@
-/* interface Menu */
+/* Interface Menu */
 
 export interface Menu {
     title: string;

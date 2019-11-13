@@ -14,12 +14,13 @@ export class ToastService {
     const toast = await this.toastController.create({
       position: 'bottom',
       message: `Invalid ${message}`,
-      duration: 1500 // length of toast 1500 milliseconds
+      duration: 1500
     });
 
     toast.present();
   }
 
+   // toast shows up when user already exists (equal email address)
   async userAlreadyExists() {
     const toast = await this.toastController.create({
       position: 'bottom',
@@ -30,7 +31,7 @@ export class ToastService {
     toast.present();
   }
 
-  // toast shows up when user cannot be found (user has not signed up)
+  // toast shows up when user cannot be found (user hasn't already signed up)
   async userNotFound() {
     const toast = await this.toastController.create({
       position: 'bottom',

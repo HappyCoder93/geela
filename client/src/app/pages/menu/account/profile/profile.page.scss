@@ -2,6 +2,15 @@
 
 .wrapper-container {
     .content-container {
+        .header-container {
+            text-align: center; 
+            margin: 5% 0% 5% 0%;
+
+            img {
+                width: 162px;
+            }
+        }
+
         .form-container {
             display: block;
             margin: 0 auto;

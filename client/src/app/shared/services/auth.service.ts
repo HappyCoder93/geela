@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { UserService } from '../../shared/services/user.service';
-import { ToastService } from './toast.service';
-import { Router } from '@angular/router';
-import { LoginUser } from '../models/LoginUser';
-import { SignupUser } from '../models/SignupUser';
 import { Observable } from 'rxjs';
 import { User } from 'firebase';
-import * as firebase from 'firebase/app';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { UserService } from '../services/user.service';
+import { ToastService } from './toast.service';
+import { Router } from '@angular/router';
+import { AuthUser } from '../models/AuthUser';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class AuthService {
   public user: Observable<User>
   public color: string;
 
-  // erro codes of createUserWithEmailAndPassword and signInWithEmailAndPassword
+  // error codes of signupWithEmailAndPassword and loginWithEmailAndPassword
   public errCode = {
     invalidEmail: 'auth/invalid-email',
     userNotFound: 'auth/user-not-found',
@@ -26,28 +26,32 @@ export class AuthService {
   }
 
   constructor(
-      private auth: AngularFireAuth, 
+      private fireAuth: AngularFireAuth,
+      private firestore: AngularFirestore,
       private userService: UserService,
+      private storage: Storage,
       private toastService: ToastService, 
       private router: Router
     ) { 
-      this.user = this.auth.user;
   }
 
-  // createUserWithEmailAndPassword
-  async signupWithEmail(user: SignupUser){
-    await this.auth.auth.createUserWithEmailAndPassword(user.email, user.password)
+  // createUserWithEmailAnd Password
+  async signupWithEmailAndPassword(user: AuthUser) {
+    await this.fireAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(res => {
         if(res.user) {
-          // create a new profile document with id of authentication
-          this.userService.createProfile(res.user.uid);
+          // if user successfully signed up -> new document of collection profile (with uid) will be created
+          this.userService.createProfileDocument(res.user.uid);
 
-          // if signup was successful - user will be forwarded to page profile
+          this.saveUserID(res.user.uid);
+          
+          // user will also be forwarded to page profile (URL: /menu/account/profile)
           this.router.navigateByUrl('/menu/account/profile');
         }
       }).catch(err => {
         console.log(err);
-
+        
+        // catch different error codes
         if(err.code == this.errCode.invalidEmail || err.code == this.errCode.weakPassword) {
           this.toastService.invalidSignupLogin('signup');
         }
@@ -55,23 +59,27 @@ export class AuthService {
           this.toastService.userAlreadyExists();
         }
 
-        // set input color to red
+        // set color of input fields red after invalid signup
         this.color = 'red';
       });
   }
 
   // signInWithEmailAndPassword
-  async loginWithEmail(user: LoginUser) {
-    await this.auth.auth.signInWithEmailAndPassword(user.email, user.password)
+  async loginWithEmailAndPassword(user: AuthUser) {
+    await this.fireAuth.auth.signInWithEmailAndPassword(user.email, user.password)
       .then(res => {
         if(res.user) {
-          // if login was successful - user will be forwarded to page home
-          this.userService.createProfile(res.user.uid);
+          this.storage.clear().then(() => {
+            this.saveUserID(res.user.uid);
+          });
+
+          // if user successfully logged in -> user will be forwarded to page home (URL: /menu/home)
           this.router.navigateByUrl('/menu/home');
         }
       }).catch(err => {
         console.log(err);
 
+        // catch different error codes
         if(err.code == this.errCode.invalidEmail) {
           this.toastService.invalidSignupLogin('login');
         }
@@ -79,18 +87,12 @@ export class AuthService {
           this.toastService.userNotFound();
         }
 
-        // set input color to red
+        // set color of input fields red after invalid login
         this.color = 'red';
       });
   }
 
-  // signInWithGoogle (login in with a regular Google Account)
-  async loginWithGoogle() {
-    this.auth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider);
-  }
-
-  // getUserData returns an Observable of type User (AngularFireAuth.user)
-  getUserData(): Observable<User> {
-    return this.auth.user;
+  saveUserID(uid: string) {
+    this.storage.set('uid', uid);
   }
 }

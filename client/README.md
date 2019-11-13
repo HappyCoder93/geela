@@ -17,3 +17,5 @@ External requirements:
 The command <code>ionic cordova run android</code> will automatically build and display the aplication on an AVD (Android Virtual Device).
 For USB-Debugging, simply connect your smartphone with your computer and run the command <code>ionic cordova run android</code> again -
 the application will then promptly open up on the connected physical device.
+
+### Ionic Storage to persist data

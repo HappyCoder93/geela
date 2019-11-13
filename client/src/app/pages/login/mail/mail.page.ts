@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../shared/services/auth.service';
-import { LoginUser } from '../../../shared/models/LoginUser';
+import { AuthUser } from '../../../shared/models/AuthUser';
 import { Router } from '@angular/router';
  
 @Component({
@@ -13,7 +13,7 @@ export class MailPage implements OnInit {
   public btnText: string = "Login";
   public color: string;
 
-  public user: LoginUser = {
+  public user: AuthUser = {
     email: "",
     password: ""
   };
@@ -29,8 +29,8 @@ export class MailPage implements OnInit {
     this.color = '#292929';
   }
 
-  login(user: LoginUser) {
-    this.authService.loginWithEmail(user).then(() => {
+  login(user: AuthUser) {
+    this.authService.loginWithEmailAndPassword(user).then(() => {
       this.color = this.authService.color;
     });
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
-import { SignupUser } from '../../shared/models/SignupUser';
+import { AuthUser } from '../../shared/models/AuthUser';
 import { Router } from '@angular/router';
 import { Keyboard } from '@ionic-native/keyboard';
 
@@ -14,13 +14,12 @@ export class SignupPage implements OnInit {
   public btnText: string = "Sign Up";
   public color: string;
 
-  public user: SignupUser = {
+  public user: AuthUser = {
     email: "",
     password: ""
   };
 
-  constructor(private authService: AuthService, private router: Router) {
- }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() { }
 
@@ -31,8 +30,8 @@ export class SignupPage implements OnInit {
     this.color = '#292929';
   }
 
-  signup(user: SignupUser) {
-    this.authService.signupWithEmail(user).then(() => {
+  signup(user: AuthUser) {
+    this.authService.signupWithEmailAndPassword(user).then(() => {
       this.color = this.authService.color;
     });
   }

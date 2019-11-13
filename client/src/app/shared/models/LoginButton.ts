@@ -1,4 +1,4 @@
-/* Interface LoginButton for page login */
+/* Interface LoginButton */
 
 export interface LoginButton {
     title: string;

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Profile } from '../../../../shared/models/Profile';
-import { UserService } from '../../../../shared/services/user.service';
 import { Observable } from 'rxjs';
+import { Storage } from '@ionic/storage';
+import { UserService } from '../../../../shared/services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,24 +12,26 @@ import { Observable } from 'rxjs';
 
 export class ProfilePage implements OnInit {
   public btnSaveText: string = "Save";
+  public uid: string;
   public profile$: Observable<Profile>;
 
   public profile: Profile = {
     firstname: "",
-    lastname: ""
+    lastname: "",
+    image: "",
   }
 
-  constructor(private userService: UserService) {
+  constructor(private storage: Storage, private userService: UserService) { }
+  
+  ngOnInit() { 
     this.getProfile();
   }
   
-  ngOnInit() { }
-
-  ionViewWillEnter() {
-    this.getProfile();
-  }
-
-  getProfile() {
-    this.profile$ = this.userService.getProfile();
+  async getProfile() {
+    await this.storage.get('uid').then(uid => {
+      this.uid = uid;
+    });
+  
+    this.profile$ = this.userService.getProfile(this.uid);
   }
 }

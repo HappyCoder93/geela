@@ -1,4 +1,4 @@
-/* Interface HomeButton.ts */
+/* Interface HomeButton */
 
 export interface HomeButton {
     title: string;

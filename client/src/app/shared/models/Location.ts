@@ -1,4 +1,4 @@
-/* interface Location */
+/* Interface Location */
 
 export interface Location {
     title: string;

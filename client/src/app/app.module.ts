@@ -6,6 +6,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+import { IonicStorageModule } from '@ionic/storage';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -17,7 +19,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 /* import AngularFirestoreModule for Cloud Firestore */
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
-
 @NgModule({
   declarations: [
     AppComponent
@@ -27,7 +28,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
   ],
   imports: [
     BrowserModule, 
-    IonicModule.forRoot(), 
+    IonicModule.forRoot(),
+    IonicStorageModule.forRoot(), 
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,

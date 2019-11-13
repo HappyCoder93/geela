@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../shared/services/auth.service';
 import { Observable } from 'rxjs';
-import { User } from 'firebase';
+import { Profile } from '../../../shared/models/Profile';
 import { HomeButton } from '../../../shared/models/HomeButton';
+import { Storage } from '@ionic/storage';
+import { UserService } from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,8 @@ import { HomeButton } from '../../../shared/models/HomeButton';
 })
 
 export class HomePage implements OnInit {
-  public user$: Observable<User>
+  public uid: string;
+  public profile$: Observable<Profile>
 
   public buttons: HomeButton[] = [
     {
@@ -26,11 +28,17 @@ export class HomePage implements OnInit {
     }
   ]
   
-  constructor(private authService: AuthService) { }
+  constructor(private storage: Storage, private userService: UserService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getProfile();
+  }
 
-  ionViewDidEnter() {
-    this.user$ = this.authService.getUserData();
+  async getProfile() {
+    await this.storage.get('uid').then(uid => {
+      this.uid = uid;
+    });
+
+    this.profile$ = this.userService.getProfile(this.uid);
   }
 }

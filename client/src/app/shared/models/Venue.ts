@@ -1,4 +1,4 @@
-/* interface Venue */
+/* Interface Venue */
 
 export interface Venue {
     name: string;

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { AngularFirestore} from '@angular/fire/firestore';
 import { Profile } from '../../shared/models/Profile';
 
 @Injectable({
@@ -9,26 +7,25 @@ import { Profile } from '../../shared/models/Profile';
 })
 
 export class UserService {
-  public profileReference: AngularFirestoreCollection<Profile>
-  public userID: string;
 
-  constructor(private auth: AngularFireAuth, private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore) { }
 
-  getProfile(): Observable<Profile> {
-    this.getUser();
-    return this.firestore.doc<Profile>(`profile/${this.userID}`).valueChanges();
+  getProfile(uid: string) {
+    return this.firestore.doc<Profile>(`profile/${uid}`).valueChanges();
   }
 
-  getUser() {
-    this.auth.authState.subscribe(auth => {
-      this.userID = auth.uid;
-    });
+  /*
+  updateProfileDocument(firstname: string, lastname: string) {
+    this.firestore.collection('profile').doc<Profile>(`${uid}`)  
   }
+  */
 
-  createProfile(id: string) {
-    this.firestore.collection('profile').doc(`${id}`).set({
+  // create document of collection profile with default attributes firstname, lastname and image
+  createProfileDocument(uid: string) {
+    this.firestore.collection('profile').doc<Profile>(`${uid}`).set({
       firstname: "empty",
-      lastname: "empty"
+      lastname: "empty",
+      image: "../../assets/icon/avatar.svg"
     });
   }
 }  
