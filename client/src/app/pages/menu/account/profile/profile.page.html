@@ -20,10 +20,10 @@
                         <ion-input type="text" [placeholder]="item.lastname" [(ngModel)]="profile.lastname" name="lastname"></ion-input>
                     </ion-item>
                 </div>
-                <ion-button expand="block">{{ btnSaveText }}</ion-button>
+                <ion-button expand="block" (click)="updateProfile()">{{ btnSaveText }}</ion-button>
             </div>
             <ion-fab vertical="bottom" horizontal="end">
-                <ion-fab-button>
+                <ion-fab-button (click)="updateProfileImage()">
                     <ion-icon name="camera"></ion-icon>
                 </ion-fab-button>
             </ion-fab>

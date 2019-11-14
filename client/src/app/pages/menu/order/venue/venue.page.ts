@@ -18,10 +18,10 @@ export class VenuePage implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private locationService: LocationService) { }
 
   ngOnInit() {
-    this.getVenues();
+    //this.getVenues();
   }
 
-  /* get locations from locationService */
+  /* get locations from locationService
   getVenues() {
     // get parameter id from URL
     this.activatedRoute.paramMap.subscribe(param => {
@@ -30,4 +30,5 @@ export class VenuePage implements OnInit {
 
     this.venues$ = this.locationService.getVenues(this.param);
   }
+  */
 }

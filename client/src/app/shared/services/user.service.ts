@@ -14,11 +14,15 @@ export class UserService {
     return this.firestore.doc<Profile>(`profile/${uid}`).valueChanges();
   }
 
-  /*
-  updateProfileDocument(firstname: string, lastname: string) {
-    this.firestore.collection('profile').doc<Profile>(`${uid}`)  
+  updateProfile(uid: string, firstname: string, lastname: string) {
+    this.firestore.collection('profile').doc<Profile>(`${uid}`).update({
+      firstname: firstname,
+      lastname: lastname,
+      image: "../../assets/icon/avatar.svg"
+    }).catch(err => {
+      console.log(err);
+    });
   }
-  */
 
   // create document of collection profile with default attributes firstname, lastname and image
   createProfileDocument(uid: string) {
@@ -26,6 +30,8 @@ export class UserService {
       firstname: "empty",
       lastname: "empty",
       image: "../../assets/icon/avatar.svg"
+    }).catch(err => {
+      console.log(err);
     });
   }
 }  

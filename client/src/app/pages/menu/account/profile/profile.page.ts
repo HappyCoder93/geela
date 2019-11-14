@@ -34,4 +34,8 @@ export class ProfilePage implements OnInit {
   
     this.profile$ = this.userService.getProfile(this.uid);
   }
+
+  updateProfile() {
+    this.userService.updateProfile(this.uid, this.profile.firstname, this.profile.lastname);
+  }
 }
