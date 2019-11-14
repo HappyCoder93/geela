@@ -13,11 +13,7 @@ const routes: Routes = [
         loadChildren: () => import('./location/location.module').then(m => m.LocationPageModule)
       },
       { 
-        path: 'venue',
-        loadChildren: () => import('./venue/venue.module').then(m => m.VenuePageModule)
-      },
-      { 
-        path: 'venue/:name',
+        path: 'location/:id',
         loadChildren: () => import('./venue/venue.module').then(m => m.VenuePageModule)
       },
       { path: 'restaurant',

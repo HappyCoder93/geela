@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocationService } from '../../../../shared/services/location.service';
 import { Observable } from 'rxjs';
 import { Venue } from '../../../../shared/models/Venue';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-venue',
@@ -11,9 +12,10 @@ import { Venue } from '../../../../shared/models/Venue';
 
 export class VenuePage implements OnInit {
   public title: string = "Venue";
+  public param: number;
   public venues$: Observable<Venue[]>;
 
-  constructor(private locationService: LocationService) { }
+  constructor(private activatedRoute: ActivatedRoute, private locationService: LocationService) { }
 
   ngOnInit() {
     this.getVenues();
@@ -21,6 +23,11 @@ export class VenuePage implements OnInit {
 
   /* get locations from locationService */
   getVenues() {
-    this.venues$ = this.locationService.getVenues();
+    // get parameter id from URL
+    this.activatedRoute.paramMap.subscribe(param => {
+      this.param = +param.get('id');
+    });
+
+    this.venues$ = this.locationService.getVenues(this.param);
   }
 }

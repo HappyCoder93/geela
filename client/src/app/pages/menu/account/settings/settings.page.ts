@@ -7,6 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SettingsPage implements OnInit {
+  
+  public buttons = [
+    {
+      title: 'Logout',
+      icon: '',
+      class: 'btn-logout'
+    },
+    {
+      title: 'Delete',
+      icon: '',
+      class: 'btn-delete'
+    }
+  ]
 
   constructor() { }
 

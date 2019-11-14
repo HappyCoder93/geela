@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../services/user.service';
 import { ToastService } from './toast.service';
 import { Router } from '@angular/router';
@@ -27,7 +26,6 @@ export class AuthService {
 
   constructor(
       private fireAuth: AngularFireAuth,
-      private firestore: AngularFirestore,
       private userService: UserService,
       private storage: Storage,
       private toastService: ToastService, 
@@ -42,11 +40,9 @@ export class AuthService {
         if(res.user) {
           // if user successfully signed up -> new document of collection profile (with uid) will be created
           this.userService.createProfileDocument(res.user.uid);
-
-          this.saveUserID(res.user.uid);
-          
-          // user will also be forwarded to page profile (URL: /menu/account/profile)
-          this.router.navigateByUrl('/menu/account/profile');
+          this.storage.set('uid', res.user.uid).then(() => {
+            this.router.navigateByUrl('/menu/account/profile');
+          });
         }
       }).catch(err => {
         console.log(err);
@@ -69,12 +65,12 @@ export class AuthService {
     await this.fireAuth.auth.signInWithEmailAndPassword(user.email, user.password)
       .then(res => {
         if(res.user) {
+          // clear storage and save uid to storage before forwarding to page home (URL: /menu/home)
           this.storage.clear().then(() => {
-            this.saveUserID(res.user.uid);
+            this.storage.set('uid', res.user.uid).then(() => {
+              this.router.navigateByUrl('/menu/home');
+            });
           });
-
-          // if user successfully logged in -> user will be forwarded to page home (URL: /menu/home)
-          this.router.navigateByUrl('/menu/home');
         }
       }).catch(err => {
         console.log(err);
@@ -93,6 +89,8 @@ export class AuthService {
   }
 
   saveUserID(uid: string) {
-    this.storage.set('uid', uid);
+    this.storage.set('uid', uid).then(() => {
+      this.router.navigateByUrl('/menu/account/profile');
+    });
   }
 }

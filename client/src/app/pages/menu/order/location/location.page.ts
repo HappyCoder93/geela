@@ -20,13 +20,13 @@ export class LocationPage implements OnInit {
     this.getLocations();
   }
 
-  // get locations from locationService
+  // get locations fro location.service.ts
   getLocations() {
     this.locations$ = this.locationService.getLocations();
   }
 
-  // goToVenuePage with parameter location (linked attribute)
-  goToVenuePage(name: string) {
-    this.router.navigateByUrl(`/venue/${name}`);
+  // navigate to URL: location/:id with parameter location_id
+  goToVenuePage(id: number) {
+    this.router.navigateByUrl(`menu/order/location/${id}`);
   }
 }

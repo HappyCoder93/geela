@@ -1,1 +1,34 @@
 /* style of settings.page */
+
+.wrapper-container {
+    .content-container {
+        .header-container {
+
+        }
+        
+        .button-container {
+            display: block;
+            margin: 0 auto;
+            width: 80%;
+
+           ion-grid {
+               ion-row {
+                   ion-col {
+                       ion-button {
+                            height: 46px;
+                            text-transform: none;
+                            --border-radius: 32px;
+                       }
+                       .btn-logout {
+                            --background: var(--ion-color-button);
+                        }
+
+                        .btn-delete {
+                            --background: var(--ion-color-danger);
+                        }
+                   }
+               }
+           }
+        }
+    }
+}

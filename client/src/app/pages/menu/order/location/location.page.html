@@ -12,7 +12,7 @@
         <ion-grid>
             <ion-row>
                 <ion-col *ngFor="let item of items" size="6">
-                    <ion-card button="true">
+                    <ion-card button="true" (click)="goToVenuePage(item.location_id)">
                         <img [src]="item.image"/>
                         <ion-card-title>{{ item.name }}</ion-card-title>
                     </ion-card>

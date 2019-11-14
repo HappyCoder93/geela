@@ -7,7 +7,8 @@
     <div class="header-container">
         <h1>{{ title }}</h1>
     </div>
-    <div class="content-container">
+    <div class="content-container" *ngFor="let item of items">
         <!-- this is were your code goes -->
+        {{ item.name }}
     </div>
 </ion-content>
