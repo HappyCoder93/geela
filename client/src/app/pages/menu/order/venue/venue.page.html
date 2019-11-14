@@ -7,8 +7,17 @@
     <div class="header-container">
         <h1>{{ title }}</h1>
     </div>
-    <div class="content-container" *ngFor="let item of items">
-        <!-- this is were your code goes -->
-        {{ item.name }}
+    <div class="content-container">
+        <!-- grid-layout -->
+        <ion-grid>
+            <ion-row>
+                <ion-col *ngFor="let item of items" size="6">
+                    <ion-card button="true" (click)="goToRestaurantPage(item.venue_id)">
+                        <img [src]="item.image"/>
+                        <ion-card-title>{{ item.name }}</ion-card-title>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
     </div>
 </ion-content>
