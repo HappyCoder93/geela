@@ -16,9 +16,4 @@ export class LocationService {
   getLocations(): Observable<Location[]> {
     return this.firestore.collection<Location>('location').valueChanges();
   }
-
-  // get all venues with of a specific location
-  getVenues(id: number): Observable<Venue[]>{
-    return this.firestore.collection<Venue>('venue', ref => ref.where('location_id', '==', id)).valueChanges();
-  }
 }
