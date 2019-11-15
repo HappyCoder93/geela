@@ -8,6 +8,12 @@ const routes: Routes = [
     path: '',
     component: OrderPage,
     children: [
+      /*
+      {
+        path: 'venue',
+        loadChildren: () => import('./venue/venue.module').then(m => m.VenuePageModule)
+      }
+      */
       {
         path: 'location',
         loadChildren: () => import('./location/location.module').then(m => m.LocationPageModule)
