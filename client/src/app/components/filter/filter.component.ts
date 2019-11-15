@@ -24,7 +24,7 @@ export class FilterComponent implements OnInit {
     }
   }
 
-  filter(event){
+  filter(event: any){
     // Stub function
     console.log(event.taget.value);
     this.list += 10;
@@ -33,6 +33,6 @@ export class FilterComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }
