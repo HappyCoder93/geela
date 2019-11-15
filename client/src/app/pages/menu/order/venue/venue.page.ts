@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { VenueService } from '../../../../shared/services/venue.service';
 import { Observable } from 'rxjs';
 import { Venue } from '../../../../shared/models/Venue';
 import { ActivatedRoute } from '@angular/router';
+import { LocationService } from '../../../../shared/services/location.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +16,7 @@ export class VenuePage implements OnInit {
   public param: number;
   public venues$: Observable<Venue[]>;
 
-  constructor(private activatedRoute: ActivatedRoute, private venueService: VenueService, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private locationService: LocationService, private router: Router) { }
 
   ngOnInit() {
     this.getVenues();
@@ -29,7 +29,7 @@ export class VenuePage implements OnInit {
       this.param = +param.get('id');
     });
 
-    this.venues$ = this.venueService.getVenues(this.param);
+    this.venues$ = this.locationService.getVenues(this.param);
   }
 
   // navigate to URL: venue/:id with parameter venue_id
