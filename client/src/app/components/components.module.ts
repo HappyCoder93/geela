@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { FilterComponent } from './filter/filter.component';
 
 /* The components.module.ts consists all the required components */
 
@@ -9,10 +10,12 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
         IonicModule
     ],
     declarations: [
-        ToolbarComponent
+        ToolbarComponent,
+        FilterComponent
     ],
     exports: [
-        ToolbarComponent
+        ToolbarComponent,
+        FilterComponent
     ]
 })
 

@@ -1,0 +1,20 @@
+<ion-grid>
+  <ion-row>
+    <ion-searchbar showCancelButton="true" (search)="filter($event)" (ionCancel)="searchbarOpen"></ion-searchbar>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <button ion-button icon-only (click)="searchbarOpen = true">
+        <ion-icon class="align-left" name="search" size="large"></ion-icon>
+      </button>
+    </ion-col>
+    <ion-col>
+      <h1>{{title}}</h1>
+    </ion-col>
+    <ion-col>
+      <button ion-button icon-only (click)="toggleOptions">
+        <ion-icon class="align-right" name="options" size="large"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

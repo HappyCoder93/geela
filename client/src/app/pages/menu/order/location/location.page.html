@@ -5,7 +5,7 @@
 <!-- template of location.page -->
 <ion-content *ngIf="locations$ | async as items" class="ion-padding">
     <div class="header-container">
-        <h1>{{ title }}</h1>
+        <app-filter title="{{ title }}"></app-filter>
     </div>
     <div class="content-container">
         <!-- grid-layout -->
