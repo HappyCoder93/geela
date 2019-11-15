@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Register</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+    <form #registerForm="ngForm" novalidate>
+        <ion-grid>
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                  <ion-list lines="none">
+                    <ion-item>
+                      <ion-label position="stacked" color="primary">Username</ion-label>
+                      <ion-input [(ngModel)]="register.username" name="username" type="text" #username="ngModel" required>
+                      </ion-input>
+                    </ion-item>
+                    <ion-text color="danger">
+                      <p [hidden]="username.valid || submitted == false" class="ion-padding-start">
+                        Username is required
+                      </p>
+                    </ion-text>
+              
+                    <ion-item>
+                      <ion-label position="stacked" color="primary">Password</ion-label>
+                      <ion-input [(ngModel)]="register.password" name="password" type="password" #password="ngModel" required>
+                      </ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="stacked" color="primary">Password Confirm</ion-label>
+                        <ion-input [(ngModel)]="passwordConfirmation" name="passwordConfirmation" type="password" #password="ngModel" required>
+                        </ion-input>
+                      </ion-item>
+                    <ion-text color="danger">
+                      <p [hidden]="password.valid || submitted == false " class="ion-padding-start">
+                        Password is required
+                      </p>
+                      <p [hidden]="passwordConfirmation == register.Password || submitted == false" class="ion-padding-start">
+                          Password Confirmation failed.
+                      </p>
+                    </ion-text>
+                  </ion-list>
+              
+                  <div class="ion-padding">
+                    <ion-button (click)="onRegister(registerForm)" type="submit" expand="block">Create</ion-button>
+                  </div>
+              </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+  
+  </ion-content>
+  

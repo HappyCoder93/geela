@@ -1,0 +1,7 @@
+{
+  "name": "GeelaSeller",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
