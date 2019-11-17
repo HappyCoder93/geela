@@ -8,12 +8,11 @@ const routes: Routes = [
     path: '',
     component: OrderPage,
     children: [
-      /*
       {
         path: 'venue',
         loadChildren: () => import('./venue/venue.module').then(m => m.VenuePageModule)
-      }
-      */
+      },
+      /*
       {
         path: 'location',
         loadChildren: () => import('./location/location.module').then(m => m.LocationPageModule)
@@ -22,11 +21,12 @@ const routes: Routes = [
         path: 'location/:id',
         loadChildren: () => import('./venue/venue.module').then(m => m.VenuePageModule)
       },
+      */
       { path: 'restaurant',
         loadChildren: () => import('./restaurant/restaurant.module').then(m => m.RestaurantPageModule)
       },
       {
-        // wildcard (invalid URL will trigger a redirect to page location)
+        // wildcard (invalid URL will forward user to page location)
         path: '**',
         redirectTo: 'location',
         pathMatch: 'full'
