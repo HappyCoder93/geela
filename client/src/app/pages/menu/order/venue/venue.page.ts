@@ -29,7 +29,7 @@ export class VenuePage implements OnInit {
       this.param = +param.get('id');
     });
 
-    this.venues$ = this.locationService.getVenues(this.param);
+    this.venues$ = this.locationService.getVenues();
   }
 
   // navigate to URL: venue/:id with parameter venue_id

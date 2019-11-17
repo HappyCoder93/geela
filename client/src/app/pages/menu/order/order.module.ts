@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '../../../shared/shared.module';
 import { OrderPage } from './order.page';
 
+/* The order.module.ts is used for child-routing */
+
 const routes: Routes = [
   {
     path: '',
@@ -24,6 +26,11 @@ const routes: Routes = [
       */
       { path: 'restaurant',
         loadChildren: () => import('./restaurant/restaurant.module').then(m => m.RestaurantPageModule)
+      },
+      {
+        // change path to restaurant/:id when data is in firestore
+        path: 'tab',
+        loadChildren: () => import('./tab/tab.module').then(m => m.TabPageModule)
       },
       {
         // wildcard (invalid URL will forward user to page location)
