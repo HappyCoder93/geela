@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import { AuthUser } from '../../shared/models/AuthUser';
 import { Router } from '@angular/router';
-import { Keyboard } from '@ionic-native/keyboard';
 
 @Component({
   selector: 'app-signup',

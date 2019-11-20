@@ -5,7 +5,7 @@
         <ion-menu class="sidemenu" contentId="sidemenu">
             <ion-content>
                 <h1>{{ title }}</h1>
-                <ion-list lines="full" *ngFor="let page of pages">
+                <ion-list *ngFor="let page of pages" lines="full">
                     <ion-menu-toggle autoHide="false">
                         <ion-item [routerLink]="page.url">
                             <ion-icon [name]="page.icon" slot="start"></ion-icon>

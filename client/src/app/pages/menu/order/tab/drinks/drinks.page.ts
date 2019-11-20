@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Item } from '../../../../../shared/models/Item';
-import { OrderService } from '../../../../../shared/services/order.service';
+//import { Item } from '../../../../../shared/models/Food';
+import { ItemService } from '../../../../../shared/services/item.service';
 
 @Component({
   selector: 'app-drinks',
@@ -10,15 +10,17 @@ import { OrderService } from '../../../../../shared/services/order.service';
 })
 
 export class DrinksPage implements OnInit {
-  public drinks$: Observable<Item[]>;
+  public drinks$: Observable<any[]>;
 
-  constructor(private orderService: OrderService) { }
+  constructor(private itemService: ItemService) { }
 
   ngOnInit() {
-    this.getDrinks();
+    //this.getDrinks();
   }
 
+  /*
   getDrinks() {
     this.drinks$ = this.orderService.getDrinks();
   }
+  */
 }

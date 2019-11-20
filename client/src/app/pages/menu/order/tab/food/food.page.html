@@ -16,7 +16,7 @@
                 <ion-slides [options]="sliderConfig">
                     <ion-slide *ngFor="let item of item.products">
                         <ion-col> 
-                            <ion-card>
+                            <ion-card button="true" (click)="addProduct(item)">
                                 <ion-card-title>{{ item.name }}</ion-card-title>
                                 <img [src]="item.image"/>
                                 <ion-card-subtitle>{{ item.price }} &euro;</ion-card-subtitle>
