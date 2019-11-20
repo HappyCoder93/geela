@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Item } from '../../../../../shared/models/Item';
+import { OrderService } from '../../../../../shared/services/order.service';
 
 @Component({
   selector: 'app-drinks',
@@ -7,8 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class DrinksPage implements OnInit {
+  public drinks$: Observable<Item[]>;
 
-  constructor() { }
+  constructor(private orderService: OrderService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getDrinks();
+  }
+
+  getDrinks() {
+    this.drinks$ = this.orderService.getDrinks();
+  }
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from '../../../../../shared/services/order.service';
+import { Observable } from 'rxjs';
+import { Item } from '../../../../../shared/models/Item';
 
 @Component({
   selector: 'app-food',
@@ -7,8 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class FoodPage implements OnInit {
+  public food$: Observable<Item[]>;
 
-  constructor() { }
+  sliderConfig = {
+    centeredSlides: true,
+    slidesPerView: 1.75
+  }
 
-  ngOnInit() { }
+  constructor(private orderService: OrderService) { }
+
+  ngOnInit() {
+    this.getFood();
+  }
+
+  getFood() {
+    this.food$ = this.orderService.getFood();
+  }
 }

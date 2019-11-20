@@ -19,6 +19,10 @@ const routes: Routes = [
         loadChildren: () => import('./drinks/drinks.module').then(m => m.DrinksPageModule)
       },
       {
+        path: 'cart',
+        loadChildren: () => import('./cart/cart.module').then(m => m.CartPageModule)
+      },
+      {
         // wildcard (invalid URL will forward user to page food)
         path: '**',
         redirectTo: 'food',

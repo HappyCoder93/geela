@@ -1,1 +1,9 @@
 /* style of drinks.page */
+
+ion-content {
+    --background: rgb(255,255,255);
+    --background: -moz-linear-gradient(180deg, rgba(255,255,255,1) 60%, rgba(245,245,245,1) 75%, rgba(235,235,235,1) 100%);
+    --background: -webkit-linear-gradient(180deg, rgba(255,255,255,1) 60%, rgba(245,245,245,1) 75%, rgba(235,235,235,1) 100%);
+    --background: linear-gradient(180deg, rgba(255,255,255,1) 60%, rgba(245,245,245,1) 75%, rgba(235,235,235,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ebebeb",GradientType=1);
+}
