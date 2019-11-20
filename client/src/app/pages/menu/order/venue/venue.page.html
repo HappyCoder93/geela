@@ -12,10 +12,33 @@
         <ion-grid>
             <ion-row>
                 <ion-col *ngFor="let item of items" size="6">
-                    <ion-card button="true" (click)="goToRestaurantPage(item.venue_id)">
-                        <img [src]="item.image"/>
-                        <ion-card-title>{{ item.name }}</ion-card-title>
-                    </ion-card>
+                    <!-- SIMPLE CARD
+                        <ion-card button="true" (click)="goToRestaurantPage(item.venue_id)"> 
+                            <img [src]="item.image"/>
+                            <ion-card-title>{{ item.name }}</ion-card-title>
+                        </ion-card>
+                    -->
+                    <!-- CARD WITH DESCRIPTION -->
+                        <ion-card button="true" (click)="goToRestaurantPage(item.venue_id)">
+                            <img [src]="item.image"/>
+                            <h3>{{ item.name }}</h3>
+                            <ion-item>
+                                <ion-icon name="pin" style="padding: 0 0.4em 0 0;"></ion-icon>
+                                <p>{{ item.county }}</p>
+                            </ion-item>
+                            <ion-item>
+                                <ion-icon name="home" style="padding: 0 0.4em 0 0;"></ion-icon>
+                                <p>{{ item.address }}</p>
+                            </ion-item>
+                            <ion-item>
+                                <ion-icon name="people" style="padding: 0 0.4em 0 0;"></ion-icon>
+                                <p>{{ item.capacity }}</p>
+                            </ion-item>
+                            <ion-item>
+                                <ion-icon name="call" style="padding: 0 0.4em 0 0;"></ion-icon>
+                                <p>{{ item.phone }}</p>
+                            </ion-item>
+                        </ion-card>
                 </ion-col>
             </ion-row>
         </ion-grid>

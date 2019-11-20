@@ -1,9 +1,11 @@
 /* Interface Venue */
 
 export interface Venue {
-    name: string;
-    image: string;
+    address: string;
     capacity: string;
-    district: string;
-    location: string;
+    county: string;
+    image: string;
+    location_id: string;
+    name: string;
+    phone: string;
 }
