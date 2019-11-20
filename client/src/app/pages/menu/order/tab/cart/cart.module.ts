@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '../../../../../shared/shared.module';
-import { FoodPage } from './food.page';
+import { CartPage } from './cart.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: FoodPage
+    component: CartPage
   }
 ];
 
@@ -16,8 +16,8 @@ const routes: Routes = [
     SharedModule
   ],
   declarations: [
-    FoodPage
+    CartPage
   ]
 })
 
-export class FoodPageModule { }
+export class CartPageModule { }
