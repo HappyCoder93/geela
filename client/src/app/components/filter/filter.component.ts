@@ -9,30 +9,39 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 // Early stage, much to be implemented
 export class FilterComponent implements OnInit {
   @Input() title: string;
-  @Input() options: boolean; // Display options item?
-  @Input() optionsParameter: any; // Which paramter of the list is the option about?
   @Input() list: any;
   @Output() filterList = new EventEmitter<any>();
 
   public searchbarOpen = false;
-  public optionsOpen = false;
+  public backupList;
 
-  toggleOptions() {
-    this.optionsOpen = !this.optionsOpen;
-    if(this.searchbarOpen) {
-      this.searchbarOpen = false;
-    }
+  resetList(){
+    this.list = this.backupList;
   }
 
-  filter(event: any){
-    // Stub function
-    console.log(event.taget.value);
-    this.list += 10;
-    this.filterList.emit(this.list);
+  filter(evt){
+    this.resetList();
+
+    let searchTerm = evt.srcElement.value;
+
+    if(!searchTerm){
+      this.filterList.emit(this.list);
+    }
+
+    let filteredList = this.list.filter(item => {
+      if(item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1){
+        return true;
+      }
+      return false;
+    });
+
+    this.filterList.emit(filteredList);
   }
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.backupList = this.list;
+  }
 
 }
