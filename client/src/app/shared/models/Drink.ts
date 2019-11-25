@@ -1,6 +1,6 @@
-/* Interface Food */
+/* Inteface Drink */
 
-export interface Food {
+export interface Drink {
     category: string;
     products: Products[];
 }

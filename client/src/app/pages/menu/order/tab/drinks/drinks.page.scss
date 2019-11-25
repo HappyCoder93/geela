@@ -6,4 +6,42 @@ ion-content {
     --background: -webkit-linear-gradient(180deg, rgba(255,255,255,1) 60%, rgba(245,245,245,1) 75%, rgba(235,235,235,1) 100%);
     --background: linear-gradient(180deg, rgba(255,255,255,1) 60%, rgba(245,245,245,1) 75%, rgba(235,235,235,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ebebeb",GradientType=1);
+
+    .product-container {
+        .content-container {
+            .category-container {
+                text-align: center;
+
+                h1 {
+                    margin-top: 12px;
+                    font-size: 18px;
+                }
+            }
+
+            .item-container {
+                ion-slides {
+                    ion-slide {
+                        ion-col {
+                            padding: 0;
+
+                            ion-card {
+                                border-radius: 8px;
+                                background: var(--ion-color-secTxtColor);
+
+                                ion-card-title {
+                                    padding: 10px;
+                                    font-size: 14px;
+                                }
+
+                                ion-card-subtitle {
+                                    padding: 10px;
+                                    color: #4c4c4c;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

@@ -5,7 +5,7 @@
 <!-- template of food.page -->
 <ion-content *ngIf="food$ | async as items" class="ion-padding">
     <div class="header-container">
-        
+        <!-- container for title -->
     </div>
     <div class="product-container" *ngFor="let item of items">
         <div class="content-container" *ngFor="let item of item.food">
@@ -19,7 +19,7 @@
                             <ion-card button="true" (click)="addProduct(item)">
                                 <ion-card-title>{{ item.name }}</ion-card-title>
                                 <img [src]="item.image"/>
-                                <ion-card-subtitle>{{ item.price }} &euro;</ion-card-subtitle>
+                                <ion-card-subtitle>&euro; {{ item.price }}</ion-card-subtitle>
                             </ion-card>
                         </ion-col>
                      </ion-slide>

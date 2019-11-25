@@ -3,6 +3,28 @@
 <app-toolbar></app-toolbar>
 
 <!-- template of drinks.page -->
-<ion-content class="ion-padding">
-
+<ion-content *ngIf="drinks$ | async as items" class="ion-padding">
+    <div class="header-container">
+        <!-- container for title -->
+    </div>
+    <div class="product-container" *ngFor="let item of items">
+        <div class="content-container" *ngFor="let item of item.drinks">
+            <div class="category-container">
+                <h1>{{ item.category }}</h1>
+            </div>
+            <div class="item-container">
+                <ion-slides [options]="sliderConfig">
+                    <ion-slide *ngFor="let item of item.products">
+                        <ion-col>
+                            <ion-card button="true" (click)="addProduct(item)">
+                                <ion-card-title>{{ item.name }}</ion-card-title>
+                                <img [src]="item.image">
+                                <ion-card-subtitle>&euro; {{ item.price }}</ion-card-subtitle>
+                            </ion-card>
+                        </ion-col>
+                    </ion-slide>
+                </ion-slides>
+            </div>
+        </div>
+    </div>
 </ion-content>

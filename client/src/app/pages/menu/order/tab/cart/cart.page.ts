@@ -11,7 +11,8 @@ import { Product } from '../../../../../shared/models/Product';
 
 export class CartPage implements OnInit {
   public products: Product[] = [];
-  public summary: number;
+  public isEmpty: boolean;
+  public totalPrice: any;
 
   @ViewChild('list', {static: false})list: IonList;
 
@@ -26,6 +27,18 @@ export class CartPage implements OnInit {
   getProducts() {
     this.orderService.getProducts().then(products => {
       this.products = products;
+
+      // show empty-container if length of products is null (no items in storage)
+      if(this.products.length == 0) {
+        this.isEmpty = true;
+      }
+      else {
+        this.isEmpty = false;
+
+        this.orderService.getPrice().then(price => {
+          this.totalPrice = price;
+        });
+      }
     });
   }
 

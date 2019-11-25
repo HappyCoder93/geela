@@ -7,31 +7,81 @@ ion-content {
     --background: linear-gradient(180deg, rgba(255,255,255,1) 60%, rgba(245,245,245,1) 75%, rgba(235,235,235,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ebebeb",GradientType=1);
 
-    .wrapper-container {
-        .content-container {
-            .empty-container {
-                text-align: center;
+    .empty-container {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
 
-                p {
-                    color: #4c4c4c;
-                }
+        .content-container {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+
+            img {
+                width: 112px;
             }
 
+            p {
+                margin: 0;
+                font-size: 16px;
+                color: var(--ion-color-primColor);
+            }
+        }
+    }    
+
+    .wrapper-container {
+        .content-container {
             .product-container {
                 display: block;
                 margin: 0 auto;
                 width: 90%;
                 
                 ion-list {
+                    padding: 0;
+
                     ion-item-sliding {
+                        ion-item-option {
+                            
+                        }
+
                         ion-item {
-                           ion-grid {
-                               padding: 0;
-                           }
+                            ion-grid {
+                                padding: 0;
+                            }
                         }
                     }
                 }
-            }
+
+                .price-container {
+                    ion-item {
+                        ion-grid {
+                           padding: 0;
+                        }
+                    }
+                }
+
+                .button-container {
+                    ion-grid {
+                        ion-row {
+                            ion-col {
+                                ion-button {
+                                    height: 42px;
+                                    text-transform: none;
+                                    --border-radius: 32px;
+                                    --background: var(--ion-color-button);
+                                }
+
+                                .clear-button {
+                                    --background: var(--ion-color-danger);
+                                }
+                            }
+                        }
+                    }
+                }
+            } 
         }
     }
 }
+
+// set Media Queries for different display sizes and orientation of smartphone

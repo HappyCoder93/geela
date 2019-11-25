@@ -30,7 +30,7 @@ export class FoodPage implements OnInit {
   }
 
   addProduct(product: Product) {
-    // product_id will be exchanged to Date.now(), because otherwise same products will have the same product_id
+    // product_id will be exchanged to Date.now()
     product.product_id = Date.now();
     this.orderService.addProduct(product);
   }
