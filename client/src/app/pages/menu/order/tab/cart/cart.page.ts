@@ -11,12 +11,15 @@ import { Product } from '../../../../../shared/models/Product';
 
 export class CartPage implements OnInit {
   public products: Product[] = [];
-  public isEmpty: boolean;
-  public totalPrice: any;
+  public isEmptyProducts: boolean;
+  public totalPrice: number;
+  public btnText: string = "Order";
 
   @ViewChild('list', {static: false})list: IonList;
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService) {
+    this.isEmptyProducts = true;
+  }
 
   ngOnInit() { }
 
@@ -28,12 +31,12 @@ export class CartPage implements OnInit {
     this.orderService.getProducts().then(products => {
       this.products = products;
 
-      // show empty-container if length of products is null (no items in storage)
-      if(this.products.length == 0) {
-        this.isEmpty = true;
+      // show empty-container, if length of products is null (when there are no items in Storage)
+      if(!products || products.length == 0) {
+        this.isEmptyProducts = true;
       }
       else {
-        this.isEmpty = false;
+        this.isEmptyProducts = false;
 
         this.orderService.getPrice().then(price => {
           this.totalPrice = price;
@@ -47,5 +50,9 @@ export class CartPage implements OnInit {
       this.list.closeSlidingItems();
       this.getProducts();
     });
+  }
+
+  orderProducts(products: Product[], totalPrice: number) {
+    this.orderService.createOrderDocument(products, totalPrice);
   }
 }

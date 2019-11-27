@@ -1,4 +1,4 @@
-/* Interface Food */
+/* Interface Food.ts */
 
 export interface Food {
     category: string;

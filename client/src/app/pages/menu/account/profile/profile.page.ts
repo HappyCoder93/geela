@@ -16,6 +16,7 @@ export class ProfilePage implements OnInit {
   public profile$: Observable<Profile>;
 
   public profile: Profile = {
+    user_id: "",
     firstname: "",
     lastname: "",
     image: "",

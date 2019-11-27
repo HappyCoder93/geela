@@ -19,6 +19,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 /* import AngularFirestoreModule for Cloud Firestore */
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -38,7 +40,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ScreenOrientation
   ],
   bootstrap: [
     AppComponent

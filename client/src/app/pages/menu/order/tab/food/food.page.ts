@@ -14,6 +14,7 @@ import { Product } from '../../../../../shared/models/Product';
 export class FoodPage implements OnInit {
   public food$: Observable<Food[]>;
 
+  // slider configuration
   sliderConfig = {
     centeredSlides: true,
     slidesPerView: 1.75
@@ -25,13 +26,13 @@ export class FoodPage implements OnInit {
     this.getFood();
   }
 
+  // call method getFood() of item.service.ts to get all food
   getFood() {
     this.food$ = this.itemService.getFood();
   }
 
+  // call method addProduct() of order.service.ts to add food to Storage
   addProduct(product: Product) {
-    // product_id will be exchanged to Date.now()
-    product.product_id = Date.now();
     this.orderService.addProduct(product);
   }
 }

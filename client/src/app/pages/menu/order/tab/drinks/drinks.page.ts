@@ -14,6 +14,7 @@ import { Product } from '../../../../../shared/models/Product';
 export class DrinksPage implements OnInit {
   public drinks$: Observable<Drink[]>;
 
+  // slider configuration
   sliderConfig = {
     centeredSlides: true,
     slidesPerView: 1.75
@@ -25,13 +26,15 @@ export class DrinksPage implements OnInit {
     this.getDrinks();
   }
 
+  // call method getDrinks() of item.service.ts to get all drinks
   getDrinks() {
     this.drinks$ = this.itemService.getDrinks();
   }
 
+  /*
   addProduct(product: Product) {
-    // product_id will be exchanged to Date.now()
     product.product_id = Date.now();
     this.orderService.addProduct(product);
   }
+  */
 }

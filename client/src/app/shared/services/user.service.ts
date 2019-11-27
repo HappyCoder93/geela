@@ -30,11 +30,10 @@ export class UserService {
   // create document of collection profile with default attributes firstname, lastname and image
   createProfileDocument(uid: string) {
     this.firestore.collection('profile').doc<Profile>(`${uid}`).set({
+      user_id: `${uid}`,
       firstname: "Jon",
       lastname: "Doe",
       image: "../../assets/icon/avatar.svg"
-    }).catch(err => {
-      console.log(err);
     });
   }
 }  

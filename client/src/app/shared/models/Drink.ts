@@ -1,4 +1,4 @@
-/* Inteface Drink */
+/* Interface Drink.ts */
 
 export interface Drink {
     category: string;
