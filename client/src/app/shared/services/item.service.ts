@@ -8,19 +8,17 @@ import { Drink } from '../../shared/models/Drink'
   providedIn: 'root'
 })
 
-/* item.service.ts is responsible for loading the items (food & drinks) from Firestore */
-
 export class ItemService {
 
   constructor(private firestore: AngularFirestore) { }
-  
-  // get food
-  getFood(): Observable<Food[]> {
-    return this.firestore.collection<Food>('items', ref => ref.where('food', 'array-contains', true)).valueChanges(); 
+   
+  // get food with a specific restaurant_id
+  getFood(restaurant_id: number): Observable<Food[]> {
+    return this.firestore.collection<Food>('items', ref => ref.where('restaurant_id', '==', restaurant_id)).valueChanges();
   }
 
-  // get drinks
-  getDrinks(): Observable<Drink[]> {
-    return this.firestore.collection<Drink>('items', ref => ref.where('drinks', 'array-contains', true)).valueChanges();
+  // get drinks with a specific restaurant_id
+  getDrinks(restaurant_id: number): Observable<Drink[]> {
+    return this.firestore.collection<Drink>('items', ref => ref.where('restaurant_id', '==', restaurant_id)).valueChanges();
   }
 }

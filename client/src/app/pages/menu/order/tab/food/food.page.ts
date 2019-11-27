@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemService } from '../../../../../shared/services/item.service';
+import { TabPage} from '../../tab/tab.page';
 import { Observable } from 'rxjs';
 import { Food } from '../../../../../shared/models/Food';
 import { OrderService } from '../../../../../shared/services/order.service';
@@ -20,18 +20,20 @@ export class FoodPage implements OnInit {
     slidesPerView: 1.75
   }
 
-  constructor(private itemService: ItemService, private orderService: OrderService) { }
+  constructor(
+      private tabPage: TabPage,
+      private orderService: OrderService
+    ) { }
 
   ngOnInit() {
     this.getFood();
   }
 
-  // call method getFood() of item.service.ts to get all food
+  // get food from TabPage method getFood()
   getFood() {
-    this.food$ = this.itemService.getFood();
+    this.food$ = this.tabPage.getFood();
   }
 
-  // call method addProduct() of order.service.ts to add food to Storage
   addProduct(product: Product) {
     this.orderService.addProduct(product);
   }

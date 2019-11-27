@@ -14,22 +14,11 @@ const routes: Routes = [
         path: 'venue',
         loadChildren: () => import('./venue/venue.module').then(m => m.VenuePageModule)
       },
-      /*
-      {
-        path: 'location',
-        loadChildren: () => import('./location/location.module').then(m => m.LocationPageModule)
-      },
-      { 
-        path: 'location/:id',
-        loadChildren: () => import('./venue/venue.module').then(m => m.VenuePageModule)
-      },
-      */
       { path: 'restaurant',
         loadChildren: () => import('./restaurant/restaurant.module').then(m => m.RestaurantPageModule)
       },
       {
-        // change path to restaurant/:id when data is in firestore
-        path: 'tab',
+        path: 'restaurant/:restaurant_id',
         loadChildren: () => import('./tab/tab.module').then(m => m.TabPageModule)
       },
       {

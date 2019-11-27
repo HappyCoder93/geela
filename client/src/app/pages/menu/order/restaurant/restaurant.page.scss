@@ -1,1 +1,52 @@
 /* style of restaurant.page */
+
+ion-content {
+    .header-container {
+        text-align: center;
+
+        h1 {
+            font-size: 21px;
+        }
+    }
+
+    .content-container {
+        ion-grid {
+            ion-row {
+                ion-col {
+                    ion-card {
+                        ion-card-title {
+                            padding: 12px;
+                            text-align: center;
+                            font-size: 16px;
+                        }
+
+                        ion-item {
+                            ion-label {
+                                margin-left: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* set Media Queries for different display sizes and orientation of smartphone */
+@media screen and(orientation: landscape ) {
+    .content-container {
+        ion-card {
+            ion-grid {
+                ion-row {
+                    ion-col {
+                        --ion-grid-columns: 24;
+
+                        ion-card-title {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

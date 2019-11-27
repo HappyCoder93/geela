@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '../../../../../shared/shared.module';
 import { FoodPage } from './food.page';
+import { TabPage } from '../tab.page';
 
 const routes: Routes = [
   {
@@ -17,6 +18,9 @@ const routes: Routes = [
   ],
   declarations: [
     FoodPage
+  ],
+  providers: [
+    TabPage
   ]
 })
 

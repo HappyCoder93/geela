@@ -11,7 +11,7 @@
         <!-- grid-layout -->
         <ion-grid>
             <ion-row>
-                <ion-col *ngFor="let item of items" size="6">
+                <ion-col *ngFor="let item of items" size="12">
                     <!-- SIMPLE CARD
                         <ion-card button="true" (click)="goToRestaurantPage(item.venue_id)"> 
                             <img [src]="item.image"/>
@@ -19,7 +19,7 @@
                         </ion-card>
                     -->
                     <!-- CARD WITH DESCRIPTION -->
-                        <ion-card button="true" (click)="goToRestaurantPage(item.venue_id)">
+                        <ion-card button="true" (click)="goToRestaurantPage()">
                             <img [src]="item.image"/>
                             <h3>{{ item.name }}</h3>
                             <ion-item>
