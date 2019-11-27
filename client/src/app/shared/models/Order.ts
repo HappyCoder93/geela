@@ -3,6 +3,7 @@
 export interface Order {
     products: Products[];
     price: number;
+    restaurant_id: number;
 }
 
 export interface Products {

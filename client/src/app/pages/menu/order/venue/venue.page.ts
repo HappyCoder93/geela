@@ -22,9 +22,7 @@ export class VenuePage implements OnInit {
     this.getVenues();
   }
 
-  /* get venues from venueService */
   getVenues() {
-    // get parameter id from URL
     this.activatedRoute.paramMap.subscribe(param => {
       this.param = +param.get('id');
     });
@@ -32,8 +30,7 @@ export class VenuePage implements OnInit {
     this.venues$ = this.locationService.getVenues();
   }
 
-  // navigate to URL: venue/:id with parameter venue_id
-  goToRestaurantPage(id: number) {
-    this.router.navigateByUrl(`menu/order/restaurants/${id}`);
+  goToRestaurant(venue_id: number) {
+    this.router.navigateByUrl(`menu/order/venue/${venue_id}`);
   }
 }

@@ -87,12 +87,16 @@ export class OrderService {
     return this.storage.get(TOTAL_PRICE);
   }
 
-  createOrderDocument(products: Product[], totalPrice: number) {
+  createDate() { 
+    return [Date.prototype.getDay];
+  }
+  createOrderDocument(restaurant_id: number, products: Product[], totalPrice: number) {
     this.order_id = Date.now();
 
     this.firestore.collection('order').doc<Order>(`${this.order_id}`).set({
       products: products,
-      price: totalPrice
+      price: totalPrice,
+      restaurant_id: restaurant_id
     });
   }
 }

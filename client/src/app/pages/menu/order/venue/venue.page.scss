@@ -1,28 +1,41 @@
 /* style of location.page */
 
 ion-content {
-    .header-container {
-        text-align: center;
-
-        h1 {
-            font-size: 24px;
-        }
-    }
-
+   
     .content-container {
         ion-grid {
-            padding: 8px 0px 0px 0px;
-
             ion-row {
-                ion-col{
-                    padding: 0;
-
+                ion-col {
                     ion-card {
-                        text-align: center;
+                        ion-card-title {
+                            padding: 12px;
+                            text-align: center;
+                            font-size: 16px;
+                        }
+
+                        ion-item {
+                            ion-label {
+                                margin-left: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* set Media Queries for different display sizes and orientation of smartphone */
+@media screen and(orientation: landscape ) {
+    .content-container {
+        ion-card {
+            ion-grid {
+                ion-row {
+                    ion-col {
+                        --ion-grid-columns: 24;
 
                         ion-card-title {
-                            padding: 8px;
-                            font-size: 16px;
+                            display: none;
                         }
                     }
                 }

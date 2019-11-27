@@ -18,7 +18,7 @@ export class HomePage implements OnInit {
   public buttons: HomeButton[] = [
     {
       title: 'Make Order',
-      url: '/menu/order/venue',
+      url: '/menu/order',
       icon: 'add'
     },
     {
