@@ -1,15 +1,17 @@
+<!-- filter-component.html -->
+
+<!-- template of filter.component -->
 <ion-grid>
   <ion-row *ngIf="searchbarOpen">
     <ion-searchbar showCancelButton="true" (ionInput)="filter($event)" (ionCancel)="searchbarOpen = false"></ion-searchbar>
   </ion-row>
   <ion-row *ngIf="!searchbarOpen">
-    <ion-col>
-      <button ion-button icon-only (click)="searchbarOpen = true">
-        <ion-icon class="align-left" name="search" size="large"></ion-icon>
-      </button>
+    <ion-col class="ion-align-self-center" size="1">
+      <ion-icon (click)="searchbarOpen = true" name="search"></ion-icon>
     </ion-col>
-    <ion-col>
+    <ion-col class="ion-align-self-center" size="10">
       <h1>{{ title }}</h1>
     </ion-col>
   </ion-row>
 </ion-grid>
+

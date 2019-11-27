@@ -5,16 +5,14 @@
 <!-- template of venue.page -->
 <ion-content *ngIf="venues$ | async as items" class="ion-padding">
     <div class="header-container">
-        <!--
         <app-filter [title]="title" [list]="items" (filterList)="items = $event"></app-filter>
-        -->
     </div>
     <div class="content-container">
         <!-- grid-layout -->
         <ion-grid>
             <ion-row>
                 <ion-col *ngFor="let item of items" size="12">
-                    <ion-card button="true">
+                    <ion-card (click)="goToRestaurant(item.venue_id)" button="true">
                         <!-- grid-layout -->
                         <ion-grid>
                             <ion-row>
@@ -32,7 +30,7 @@
                                         <ion-label>{{ item.capacity }}</ion-label>
                                     </ion-item>
                                     <ion-item>
-                                        <ion-icon name="phone"></ion-icon>
+                                        <ion-icon name="call"></ion-icon>
                                         <ion-label>{{ item.phone }}</ion-label>
                                     </ion-item>
                                 </ion-col>

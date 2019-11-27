@@ -43,5 +43,4 @@ export class FilterComponent implements OnInit {
   ngOnInit() {
     this.backupList = this.list;
   }
-
 }

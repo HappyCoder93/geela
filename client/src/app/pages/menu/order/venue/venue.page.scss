@@ -24,3 +24,22 @@ ion-content {
         }
     }
 }
+
+/* set Media Queries for different display sizes and orientation of smartphone */
+@media screen and(orientation: landscape ) {
+    .content-container {
+        ion-card {
+            ion-grid {
+                ion-row {
+                    ion-col {
+                        --ion-grid-columns: 24;
+
+                        ion-card-title {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

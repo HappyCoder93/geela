@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import { LocationService } from '../../../../shared/services/location.service';
 import { Observable } from 'rxjs';
 import { Restaurant } from '../../../../shared/models/Restaurant';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-restaurant',
@@ -12,16 +12,21 @@ import { Router } from '@angular/router';
 
 export class RestaurantPage implements OnInit {
   public title: string = "Restaurants";
+  public param: number;
   public restaurants$: Observable<Restaurant[]>;
 
-  constructor(private locationService: LocationService, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private locationService: LocationService, private router: Router) { }
 
   ngOnInit() {
     this.getRestaurants();
   }
 
   getRestaurants() {
-    this.restaurants$ = this.locationService.getRestaurants();
+    this.activatedRoute.paramMap.subscribe(param => {
+      this.param = +param.get('venue_id');
+    });
+
+    this.restaurants$ = this.locationService.getRestaurants(this.param);
   }
 
   goToItems(restaurant_id: number) {

@@ -14,7 +14,8 @@ const routes: Routes = [
         path: 'venue',
         loadChildren: () => import('./venue/venue.module').then(m => m.VenuePageModule)
       },
-      { path: 'restaurant',
+      {
+        path: 'venue/:venue_id',
         loadChildren: () => import('./restaurant/restaurant.module').then(m => m.RestaurantPageModule)
       },
       {
@@ -22,9 +23,9 @@ const routes: Routes = [
         loadChildren: () => import('./tab/tab.module').then(m => m.TabPageModule)
       },
       {
-        // wildcard (invalid URL will forward user to page location)
+        // wildcard (invalid URL will forward user to page venue)
         path: '**',
-        redirectTo: 'location',
+        redirectTo: 'venue',
         pathMatch: 'full'
       }
     ]
