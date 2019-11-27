@@ -5,41 +5,41 @@
 <!-- template of venue.page -->
 <ion-content *ngIf="venues$ | async as items" class="ion-padding">
     <div class="header-container">
+        <!--
         <app-filter [title]="title" [list]="items" (filterList)="items = $event"></app-filter>
+        -->
     </div>
     <div class="content-container">
         <!-- grid-layout -->
         <ion-grid>
             <ion-row>
                 <ion-col *ngFor="let item of items" size="12">
-                    <!-- SIMPLE CARD
-                        <ion-card button="true" (click)="goToRestaurantPage(item.venue_id)"> 
-                            <img [src]="item.image"/>
-                            <ion-card-title>{{ item.name }}</ion-card-title>
-                        </ion-card>
-                    -->
-                    <!-- CARD WITH DESCRIPTION -->
-                        <ion-card button="true" (click)="goToRestaurantPage()">
-                            <img [src]="item.image"/>
-                            <h3>{{ item.name }}</h3>
-                            <ion-item>
-                                <ion-icon name="pin" style="padding: 0 0.4em 0 0;"></ion-icon>
-                                <p>{{ item.county }}</p>
-                            </ion-item>
-                            <ion-item>
-                                <ion-icon name="home" style="padding: 0 0.4em 0 0;"></ion-icon>
-                                <p>{{ item.address }}</p>
-                            </ion-item>
-                            <ion-item>
-                                <ion-icon name="people" style="padding: 0 0.4em 0 0;"></ion-icon>
-                                <p>{{ item.capacity }}</p>
-                            </ion-item>
-                            <ion-item>
-                                <ion-icon name="call" style="padding: 0 0.4em 0 0;"></ion-icon>
-                                <p>{{ item.phone }}</p>
-                            </ion-item>
-                        </ion-card>
-                </ion-col>
+                    <ion-card button="true">
+                        <!-- grid-layout -->
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col size="12">
+                                    <img [src]="item.image"/>
+                                </ion-col>
+                                <ion-col class="ion-align-self-center">
+                                    <ion-card-title>{{ item.name }}</ion-card-title>
+                                    <ion-item>
+                                        <ion-icon name="pin"></ion-icon>
+                                        <ion-label>{{ item.address }}</ion-label>
+                                    </ion-item>
+                                    <ion-item>
+                                        <ion-icon name="people"></ion-icon>
+                                        <ion-label>{{ item.capacity }}</ion-label>
+                                    </ion-item>
+                                    <ion-item>
+                                        <ion-icon name="phone"></ion-icon>
+                                        <ion-label>{{ item.phone }}</ion-label>
+                                    </ion-item>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-card>   
+                </ion-col> 
             </ion-row>
         </ion-grid>
     </div>

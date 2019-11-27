@@ -31,9 +31,4 @@ export class VenuePage implements OnInit {
 
     this.venues$ = this.locationService.getVenues();
   }
-
-  // navigate to URL: venue/:id with parameter venue_id
-  goToRestaurantPage(id: number) {
-    this.router.navigateByUrl(`menu/order/restaurants/${id}`);
-  }
 }
