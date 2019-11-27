@@ -1,0 +1,23 @@
+
+<ion-content>
+  <div class="header-container">
+    <h1>{{ title }}</h1>
+  </div>
+  <div class="content-container">
+    <ion-list>
+      <ion-item>
+        <ion-label>Floor</ion-label>
+        <ion-select value="1" interface="popover">
+          <ion-select-option value="1">1st Floor</ion-select-option>
+          <ion-select-option value="2">2nd Floor</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+  <div>
+    <img [src]="image"/>
+    <ion-icon name="pin" style="bottom: 90px; left: 90px" [style.color]="color1" size="large" (click)="select1()"></ion-icon>
+    <ion-icon name="pin" style="bottom: 350px; left: 250px" [style.color]="color2" size="large" (click)="select2()"></ion-icon>
+  </div>
+  </div>
+</ion-content>
