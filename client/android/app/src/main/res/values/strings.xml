@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">yourMeal</string>
+    <string name="title_activity_main">yourMeal</string>
+    <string name="package_name">com.geela.yourmeal</string>
+    <string name="custom_url_scheme">com.geela.yourmeal</string>
+</resources>

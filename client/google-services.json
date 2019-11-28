@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "625648859168",
+    "firebase_url": "https://geela-9292c.firebaseio.com",
+    "project_id": "geela-9292c",
+    "storage_bucket": "geela-9292c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625648859168:android:39a055db920473131b6445",
+        "android_client_info": {
+          "package_name": "com.geela.yourmeal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625648859168-lb0njjq76ue3ddjvmj9pb5q0eihm7vnt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5-EjNlAzFw7iZWQnt-YI2D2UQIf-dJLI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625648859168-lb0njjq76ue3ddjvmj9pb5q0eihm7vnt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
