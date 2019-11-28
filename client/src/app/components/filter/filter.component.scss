@@ -1,6 +1,8 @@
 /* style of filter.component */
 
 ion-grid {
+    padding: 0;
+
     ion-row {
         ion-searchbar {
             padding: 0;
@@ -8,13 +10,13 @@ ion-grid {
 
         ion-col {
             ion-icon {
-                font-size: 26px;
+                font-size: 25px;
             }
 
             h1 {
                 margin: 0;
                 text-align: center;
-                font-size: 24px;
+                font-size: 21px;
             }
         }
     }

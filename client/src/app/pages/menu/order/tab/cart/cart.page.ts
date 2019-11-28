@@ -32,7 +32,7 @@ export class CartPage implements OnInit {
     this.orderService.getProducts().then(products => {
       this.products = products;
 
-      // show empty-container, if length of products is null (when there are no items in Storage)
+      // show empty-container, if length of products is null (no items in Storage)
       if(!products || products.length == 0) {
         this.isEmptyProducts = true;
       }

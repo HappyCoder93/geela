@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Product } from '../models/Product';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { Order } from '../models/Order';
  
 const ORDER_KEY = 'order';
@@ -14,6 +15,7 @@ const TOTAL_PRICE = 'total';
 export class OrderService {
   public order_id: number;
   public totalPrice: number;
+  public user_id: string;
 
   constructor(private storage: Storage, private firestore: AngularFirestore) { 
     this.getPrice().then(price => {
@@ -87,16 +89,25 @@ export class OrderService {
     return this.storage.get(TOTAL_PRICE);
   }
 
-  createDate() { 
-    return [Date.prototype.getDay];
-  }
+  // createOrderDocument (collection order) create a new order document for Firestore
   createOrderDocument(restaurant_id: number, products: Product[], totalPrice: number) {
     this.order_id = Date.now();
 
-    this.firestore.collection('order').doc<Order>(`${this.order_id}`).set({
-      products: products,
-      price: totalPrice,
-      restaurant_id: restaurant_id
+    this.storage.get('uid').then(user_id => {
+      this.user_id = user_id;
+
+      this.firestore.collection('order').doc<Order>(`${this.order_id}`).set({
+        products: products,
+        price: totalPrice,
+        status: "ordered",
+        user_id: this.user_id,
+        restaurant_id: restaurant_id
+      });
     });
+  }
+
+  getOrder(user_id: string): Observable<Order[]> {
+    return this.firestore.collection<Order>('order', ref => ref.where('user_id', '==', user_id)
+      .where('status', '==', 'ordered')).valueChanges();
   }
 }

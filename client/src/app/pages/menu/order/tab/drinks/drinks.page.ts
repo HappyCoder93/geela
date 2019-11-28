@@ -32,7 +32,6 @@ export class DrinksPage implements OnInit {
   }
 
   addProduct(product: Product) {
-    product.product_id = Date.now();
     this.orderService.addProduct(product);
   }
 }

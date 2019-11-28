@@ -23,7 +23,7 @@ export class HomePage implements OnInit {
     },
     {
       title: 'Show Order',
-      url: '',
+      url: '/menu/show-order',
       icon: 'eye'
     }
   ]

@@ -3,13 +3,13 @@
 <!-- template of filter.component -->
 <ion-grid>
   <ion-row *ngIf="searchbarOpen">
-    <ion-searchbar showCancelButton="true" (ionInput)="filter($event)" (ionCancel)="searchbarOpen = false"></ion-searchbar>
+    <ion-searchbar showCancelButton="focus" (ionInput)="filter($event)" (ionCancel)="searchbarOpen = false"></ion-searchbar>
   </ion-row>
-  <ion-row *ngIf="!searchbarOpen">
-    <ion-col class="ion-align-self-center" size="1">
+  <ion-row *ngIf="!searchbarOpen" class="ion-align-items-center">
+    <ion-col size="1">
       <ion-icon (click)="searchbarOpen = true" name="search"></ion-icon>
     </ion-col>
-    <ion-col class="ion-align-self-center" size="10">
+    <ion-col size="10">
       <h1>{{ title }}</h1>
     </ion-col>
   </ion-row>

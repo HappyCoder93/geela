@@ -5,7 +5,7 @@
 <!-- template of restaurant.page -->
 <ion-content *ngIf="restaurants$ | async as items" class="ion-padding">
     <div class="header-container">
-        <h1>{{ title }}</h1>
+        <app-filter [title]="title" [list]="items" (filterList)="items = $event"></app-filter>
     </div>
     <div class="content-container">
         <!-- grid-layout -->
