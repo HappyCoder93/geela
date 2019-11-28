@@ -4,19 +4,26 @@
 
 <!-- template of show-order.page -->
 <ion-content class="ion-padding" *ngIf="order$ | async as items">
-  <div class="wrapper-container">
+  <!-- container will only be displayed when there is no order with status 'ordered' -->
+  <div class="empty-container" *ngIf="isEmptyOrders">
+    <div class="content-container">
+      <img src="../../../../assets/icon/cart.svg"/>
+      <p>Order is empty</p>
+    </div>      
+  </div>
+  <div class="wrapper-container" *ngIf="!isEmptyOrders">
     <div class="content-container">
       <div class="header-container">
-        <h1>Order(s)</h1>
+        <h1>Order</h1>
       </div>
       <div class="order-container" *ngFor="let item of items">
-        <ion-list class="list-container" *ngFor="let item of item.products" > 
+        <ion-list class="list-container" *ngFor="let product of item.products" > 
           <ion-item lines="none">
             <!-- grid-layout -->
             <ion-grid>
               <ion-row>
                 <ion-col size="9">
-                  <ion-label>{{ item.name}}</ion-label>
+                  <ion-label>{{ product.name }}</ion-label>
                 </ion-col>
                 <ion-col size="3">
                   <ion-label class="price">&euro; {{ item.price }}</ion-label>

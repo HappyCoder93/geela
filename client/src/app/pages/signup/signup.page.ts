@@ -22,7 +22,7 @@ export class SignupPage implements OnInit {
 
   ngOnInit() { }
 
-  // lifecycle hook to clear the input fields and color after page transition
+  // clear input fields and color after page transition
   ionViewWillEnter() {
     this.user.email = "";
     this.user.password = "";

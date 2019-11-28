@@ -21,7 +21,8 @@ export class AuthService {
     invalidEmail: 'auth/invalid-email',
     userNotFound: 'auth/user-not-found',
     userAlreadyExists: 'auth/email-already-in-use',
-    weakPassword: 'auth/weak-password'
+    weakPassword: 'auth/weak-password',
+    wrongPassword: 'auth/wrong-password'
   }
 
   constructor(
@@ -30,18 +31,19 @@ export class AuthService {
       private storage: Storage,
       private toastService: ToastService, 
       private router: Router
-    ) { 
-  }
+    ) { }
 
   // createUserWithEmailAnd Password
   async signupWithEmailAndPassword(user: AuthUser) {
     await this.fireAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(res => {
         if(res.user) {
+          this.color = '#292929';
+
           // if user successfully signed up -> new document of collection profile (with uid) will be created
           this.userService.createProfileDocument(res.user.uid);
           this.storage.set('uid', res.user.uid).then(() => {
-            this.router.navigateByUrl('/menu/account/profile');
+            this.router.navigateByUrl('/login/mail');
           });
         }
       }).catch(err => {
@@ -54,8 +56,7 @@ export class AuthService {
         else if(err.code == this.errCode.userAlreadyExists) {
           this.toastService.userAlreadyExists();
         }
-
-        // set color of input fields red after invalid signup
+        
         this.color = 'red';
       });
   }
@@ -65,6 +66,8 @@ export class AuthService {
     await this.fireAuth.auth.signInWithEmailAndPassword(user.email, user.password)
       .then(res => {
         if(res.user) {
+          this.color = '#292929';
+
           // clear storage and save uid to storage before forwarding to page home (URL: /menu/home)
           this.storage.clear().then(() => {
             this.storage.set('uid', res.user.uid).then(() => {
@@ -75,22 +78,18 @@ export class AuthService {
       }).catch(err => {
         console.log(err);
 
-        // catch different error codes
+        // catch errors (error codes)
         if(err.code == this.errCode.invalidEmail) {
           this.toastService.invalidSignupLogin('login');
         }
         else if(err.code == this.errCode.userNotFound) {
           this.toastService.userNotFound();
         }
+        else if(err.code == this.errCode.wrongPassword) {
+          this.toastService.invalidSignupLogin('login');
+        }
 
-        // set color of input fields red after invalid login
         this.color = 'red';
       });
-  }
-
-  saveUserID(uid: string) {
-    this.storage.set('uid', uid).then(() => {
-      this.router.navigateByUrl('/menu/account/profile');
-    });
   }
 }

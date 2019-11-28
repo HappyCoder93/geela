@@ -3,6 +3,7 @@ import { TabPage } from '../tab.page';
 import { IonList } from '@ionic/angular';
 import { OrderService } from '../../../../../shared/services/order.service';
 import { Product } from '../../../../../shared/models/Product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -18,7 +19,7 @@ export class CartPage implements OnInit {
 
   @ViewChild('list', {static: false})list: IonList;
 
-  constructor(private tabPage: TabPage, private orderService: OrderService) {
+  constructor(private tabPage: TabPage, private orderService: OrderService, private router: Router) {
     this.isEmptyProducts = true;
   }
 
@@ -53,8 +54,9 @@ export class CartPage implements OnInit {
     });
   }
 
-  // create order and send order to Firestore for seller
+  // create order and send order to Firestore
   orderProducts(products: Product[], totalPrice: number) {
     this.orderService.createOrderDocument(this.tabPage.param, products, totalPrice);
+    this.router.navigateByUrl('/menu/home');
   }
 }

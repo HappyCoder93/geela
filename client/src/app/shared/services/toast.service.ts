@@ -9,7 +9,7 @@ export class ToastService {
 
   constructor(private toastController: ToastController) { }
 
-  // toast will show up when input fields email and password are empty (pages signup and login)
+  // fields email and password are empty
   async invalidSignupLogin(message: string) {
     const toast = await this.toastController.create({
       position: 'bottom',
@@ -19,8 +19,8 @@ export class ToastService {
 
     toast.present();
   }
-
-   // toast will show up when user already exists (email addresses are equal)
+  
+   // user already exists (user have the same email address)
   async userAlreadyExists() {
     const toast = await this.toastController.create({
       position: 'bottom',
@@ -31,7 +31,7 @@ export class ToastService {
     toast.present();
   }
 
-  // toast will show up when user cannot be found (user does not exist)
+  // user cannot be found (user does not exist)
   async userNotFound() {
     const toast = await this.toastController.create({
       position: 'bottom',
@@ -42,7 +42,7 @@ export class ToastService {
     toast.present();
   }
 
-  // toast will show up when profile (firstname, lastname and image) was updated
+  // firstname, lastname and image were updated
   async updatedProfile() {
     const toast = await this.toastController.create({
       position: 'bottom',

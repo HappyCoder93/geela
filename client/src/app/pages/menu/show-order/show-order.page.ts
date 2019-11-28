@@ -13,6 +13,8 @@ import { OrderService } from '../../../shared/services/order.service';
 export class ShowOrderPage implements OnInit {
   public user_id: string;
   public order$: Observable<Order[]>;
+  public length: number;
+  public isEmptyOrders: boolean;
 
   constructor(private storage: Storage, private orderService: OrderService) { }
 
@@ -24,6 +26,17 @@ export class ShowOrderPage implements OnInit {
     this.storage.get('uid').then(user_id => {
       this.user_id = user_id
       this.order$ = this.orderService.getOrder(this.user_id);
+
+      this.order$.subscribe((order) => {
+        this.length = order.length;
+        
+        if(this.length == 0) {
+          this.isEmptyOrders = true;
+        }
+        else {
+          this.isEmptyOrders = false;
+        }
+      })
     });
   }
 }

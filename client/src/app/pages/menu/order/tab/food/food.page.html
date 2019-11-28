@@ -5,7 +5,7 @@
 <!-- template of food.page -->
 <ion-content *ngIf="food$ | async as items" class="ion-padding">
     <div class="header-container">
-        <!-- container for title -->
+        <h1>Select Food</h1>
     </div>
     <div class="product-container" *ngFor="let item of items">
         <div class="content-container" *ngFor="let item of item.food">
