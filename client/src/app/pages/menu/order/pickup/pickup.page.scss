@@ -1,0 +1,29 @@
+ion-content {
+    .header-container {
+        text-align: center;
+
+        h1 {
+            font-size: 21px;
+        }
+    }
+
+    .content-container {
+        margin: 16px;
+    }
+}
+
+ion-icon {
+    position: relative;;
+}
+
+/* NOT SO EASY
+::shadow{
+    div.icon-inner{
+        svg{
+            -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        }
+    }
+}
+*/
