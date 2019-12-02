@@ -12,11 +12,11 @@ import { Drink } from 'src/app/shared/models/Drink';
 })
 
 export class TabPage implements OnInit {
-  public param: number;
+  public param: string;
 
   constructor(private activatedRoute: ActivatedRoute, private itemService: ItemService) { 
     this.activatedRoute.paramMap.subscribe(param => {
-      this.param = +param.get('restaurant_id');
+      this.param = param.get('restaurant_id');
     });
   }
 

@@ -90,7 +90,7 @@ export class OrderService {
   }
 
   // createOrderDocument (collection order) create a new order document for Firestore
-  createOrderDocument(restaurant_id: number, products: Product[], totalPrice: number) {
+  createOrderDocument(restaurant_id: string, products: Product[], totalPrice: number) {
     this.order_id = Date.now();
 
     this.storage.get('uid').then(user_id => {
@@ -104,6 +104,9 @@ export class OrderService {
         restaurant_id: restaurant_id
       });
     });
+
+    this.storage.set(ORDER_KEY, []);
+    this.storage.set(TOTAL_PRICE, 0);
   }
 
   getOrder(user_id: string): Observable<Order[]> {

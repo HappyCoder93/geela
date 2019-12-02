@@ -13,12 +13,12 @@ export class ItemService {
   constructor(private firestore: AngularFirestore) { }
    
   // get food with a specific restaurant_id
-  getFood(restaurant_id: number): Observable<Food[]> {
+  getFood(restaurant_id: string): Observable<Food[]> {
     return this.firestore.collection<Food>('items', ref => ref.where('restaurant_id', '==', restaurant_id)).valueChanges();
   }
 
   // get drinks with a specific restaurant_id
-  getDrinks(restaurant_id: number): Observable<Drink[]> {
+  getDrinks(restaurant_id: string): Observable<Drink[]> {
     return this.firestore.collection<Drink>('items', ref => ref.where('restaurant_id', '==', restaurant_id)).valueChanges();
   }
 }

@@ -16,7 +16,12 @@ ion-content {
             width: 100%;
 
             .header-container {
-    
+                margin-bottom: 10%;
+
+                h1 {
+                    text-align: center;
+                    font-size: 18px;
+                }
             }
             
             .button-container {
@@ -37,6 +42,21 @@ ion-content {
                 .btn-delete {
                     --background: var(--ion-color-danger);
                 }
+            }
+        }
+    }
+}
+
+/* set Media Queries for different display sizes and orientation of smartphone */
+@media screen and(orientation: landscape) {
+    .wrapper-container {
+        .content-container {
+            .header-container {
+                margin-bottom: 5% !important;
+            }
+
+            .button-container {
+                width: 60% !important;
             }
         }
     }

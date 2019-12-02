@@ -5,7 +5,7 @@ export interface Order {
     price: number;
     status: string;
     user_id: string;
-    restaurant_id: number;
+    restaurant_id: string;
 }
 
 export interface Products {

@@ -65,7 +65,7 @@ export class UserService {
 
       this.storage.get('uid').then(user_id => {
         this.user_id = user_id;
-        this.firestore.collection("profile").doc(`${user_id}`).delete();
+        this.firestore.collection("profile").doc(`${this.user_id}`).delete();
         this.storage.clear();
       })
 

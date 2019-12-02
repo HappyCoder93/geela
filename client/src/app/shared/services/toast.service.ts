@@ -52,4 +52,15 @@ export class ToastService {
 
     toast.present();
   }
+
+  // order successful sent
+  async orderSuccess() {
+    const toast = await this.toastController.create({
+      position: 'bottom',
+      message: 'Order sent',
+      duration: 1500
+    });
+
+    toast.present();
+  }
 }

@@ -4,6 +4,7 @@ import { IonList } from '@ionic/angular';
 import { OrderService } from '../../../../../shared/services/order.service';
 import { Product } from '../../../../../shared/models/Product';
 import { Router } from '@angular/router';
+import { ToastService } from '../../../../../shared/services/toast.service';
 
 @Component({
   selector: 'app-cart',
@@ -19,9 +20,15 @@ export class CartPage implements OnInit {
 
   @ViewChild('list', {static: false})list: IonList;
 
-  constructor(private tabPage: TabPage, private orderService: OrderService, private router: Router) {
-    this.isEmptyProducts = true;
-  }
+  constructor(
+      private tabPage: TabPage, 
+      private orderService: OrderService, 
+      private router: Router,
+      private toastService: ToastService
+    ) 
+    {
+      this.isEmptyProducts = true;
+    }
 
   ngOnInit() { }
 
@@ -58,5 +65,6 @@ export class CartPage implements OnInit {
   orderProducts(products: Product[], totalPrice: number) {
     this.orderService.createOrderDocument(this.tabPage.param, products, totalPrice);
     this.router.navigateByUrl('/menu/home');
+    this.toastService.orderSuccess();
   }
 }

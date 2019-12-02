@@ -11,7 +11,7 @@ ion-content {
         .content-container {
             .header-container {
                 text-align: center; 
-                margin: 5% 0% 5% 0%;
+                margin: 5% 0% 8% 0%;
     
                 img {
                     width: 162px;
@@ -22,12 +22,6 @@ ion-content {
                 display: block;
                 margin: 0 auto;
                 width: 75%;
-
-                h1 {
-                    margin: 26px 0px 26px 0px;
-                    text-align: center;
-                    font-size: 18px;
-                }
     
                 .item-firstname {
                     margin-bottom: 12px;
@@ -88,20 +82,28 @@ ion-content {
             display: flex;
             height: 100%;
             align-items: center;
-
-            .header-container {
-                display: none;
-            }
+            justify-content: center;
 
             .content-container {
-                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 80%;
+
+                .header-container {
+                    margin: 0 !important;   
+    
+                    img {
+                        width: 148x;
+                    }
+                }
 
                 .form-container {
                     width: 50%;
                 }
 
                 ion-fab {
-                    display: none;
+                    //display: none;
                 }
             }
         }
