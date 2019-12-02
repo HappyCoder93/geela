@@ -11,6 +11,16 @@ export class UserService {
 
   constructor(private firestore: AngularFirestore, private toastService: ToastService) { }
 
+  // create a 
+  createProfileDocument(uid: string) {
+    this.firestore.collection('profile').doc<Profile>(`${uid}`).set({
+      user_id: `${uid}`,
+      firstname: "Jon",
+      lastname: "Doe",
+      image: "../../assets/icon/avatar.svg"
+    });
+  }
+
   getProfile(uid: string) {
     return this.firestore.doc<Profile>(`profile/${uid}`).valueChanges();
   }
@@ -24,16 +34,6 @@ export class UserService {
       this.toastService.updatedProfile();
     }).catch(err => {
       console.log(err);
-    });
-  }
-
-  // create document of collection profile with default attributes firstname, lastname and image
-  createProfileDocument(uid: string) {
-    this.firestore.collection('profile').doc<Profile>(`${uid}`).set({
-      user_id: `${uid}`,
-      firstname: "Jon",
-      lastname: "Doe",
-      image: "../../assets/icon/avatar.svg"
     });
   }
 }  
