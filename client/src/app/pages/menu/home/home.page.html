@@ -7,7 +7,7 @@
     <div class="wrapper-container">
         <div class="content-container">
             <div class="header-container">
-                <h1>Hello, {{ item.firstname }} {{ item.lastname }}!</h1>
+                <h1>Hello, {{ item.firstname }}!</h1>
                 <div class="button-container" *ngFor="let button of buttons">
                     <ion-button expand="block" [routerLink]="button.url">
                         <ion-icon [name]="button.icon"></ion-icon>

@@ -1,15 +1,25 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore} from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Profile } from '../../shared/models/Profile';
 import { ToastService } from './toast.service';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService {
+  private user_id: string;
 
-  constructor(private firestore: AngularFirestore, private toastService: ToastService) { }
+  constructor(
+      private firestore: AngularFirestore, 
+      private fireAuth: AngularFireAuth, 
+      private toastService: ToastService,
+      private router: Router,
+      private storage: Storage
+    ) { }
 
   // create a 
   createProfileDocument(uid: string) {
@@ -35,5 +45,31 @@ export class UserService {
     }).catch(err => {
       console.log(err);
     });
+  }
+
+  logout() {
+    this.fireAuth.auth.signOut().then(() => {
+      console.log("User logged out!");
+
+      this.storage.get('uid').then(() => {
+        this.storage.clear();
+      });
+
+      this.router.navigateByUrl('/login');
+    });
+  }
+
+  deleteAccount() {
+    this.fireAuth.auth.currentUser.delete().then(() => {
+      console.log("User deleted!");
+
+      this.storage.get('uid').then(user_id => {
+        this.user_id = user_id;
+        this.firestore.collection("profile").doc(`${user_id}`).delete();
+        this.storage.clear();
+      })
+
+      this.router.navigateByUrl('/login');
+    })
   }
 }  

@@ -1,34 +1,43 @@
 /* style of settings.page */
 
-.wrapper-container {
-    .content-container {
-        .header-container {
+ion-content {
+    --background: rgb(255,255,255);
+    --background: -moz-linear-gradient(180deg, rgba(255,255,255,1) 60%, rgba(245,245,245,1) 75%, rgba(235,235,235,1) 100%);
+    --background: -webkit-linear-gradient(180deg, rgba(255,255,255,1) 60%, rgba(245,245,245,1) 75%, rgba(235,235,235,1) 100%);
+    --background: linear-gradient(180deg, rgba(255,255,255,1) 60%, rgba(245,245,245,1) 75%, rgba(235,235,235,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ebebeb",GradientType=1);
 
-        }
-        
-        .button-container {
-            display: block;
-            margin: 0 auto;
-            width: 80%;
+    .wrapper-container {
+        display: flex;
+        height: 100%;
+        align-items: center;
 
-           ion-grid {
-               ion-row {
-                   ion-col {
-                       ion-button {
-                            height: 46px;
-                            text-transform: none;
-                            --border-radius: 32px;
-                       }
-                       .btn-logout {
-                            --background: var(--ion-color-button);
-                        }
+        .content-container {
+            width: 100%;
 
-                        .btn-delete {
-                            --background: var(--ion-color-danger);
-                        }
-                   }
+            .header-container {
+    
+            }
+            
+            .button-container {
+                display: block;
+                margin: 0 auto;
+                width: 75%;
+    
+                ion-button {
+                    margin-bottom: 16px;
+                    height: 46px;
+                    text-transform: none;
+                    --border-radius: 32px;
                }
-           }
+               .btn-logout {
+                    --background: var(--ion-color-button);
+                }
+
+                .btn-delete {
+                    --background: var(--ion-color-danger);
+                }
+            }
         }
     }
 }

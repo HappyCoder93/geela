@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingsButton } from '../../../../shared/models/SettingsButton';
+import { UserService } from '../../../../shared/services/user.service';
 
 @Component({
   selector: 'app-settings',
@@ -7,21 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SettingsPage implements OnInit {
-  
-  public buttons = [
-    {
-      title: 'Logout',
-      icon: '',
-      class: 'btn-logout'
-    },
-    {
-      title: 'Delete',
-      icon: '',
-      class: 'btn-delete'
-    }
-  ]
+  public btnTxtLogout: string = "Logout";
+  public btnTxtDelete: string = "Delete";
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() { }
+
+  logout() {
+    this.userService.logout();
+  }
+
+  delete() {
+    this.userService.deleteAccount();
+  }
 }
