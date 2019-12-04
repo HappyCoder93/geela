@@ -17,11 +17,11 @@ export class UserService {
       private firestore: AngularFirestore, 
       private fireAuth: AngularFireAuth, 
       private toastService: ToastService,
-      private alertService: AlertService,
       private router: Router,
       private storage: Storage
     ) { }
 
+  // profile document will be created right after sign up
   createProfileDocument(uid: string) {
     this.firestore.collection('profile').doc<Profile>(`${uid}`).set({
       user_id: `${uid}`,
@@ -59,7 +59,7 @@ export class UserService {
     });
   }
 
-  // deleteAccount deletes authenticated user with collection profile
+  // deleteAccount delets authenticated user and collection profile
   deleteAccount() {
     this.fireAuth.auth.currentUser.delete().then(() => {
       console.log('User deleted');

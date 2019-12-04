@@ -15,9 +15,11 @@ export class AlertService {
     const alert = await this.alertController.create({
       header: 'Success',
       message: 'Order successfully sent',
+      cssClass: 'order-alert',
       buttons: [
         {
           text: 'Home',
+          cssClass: 'order-alert-button',
           handler: () => {
             this.router.navigateByUrl('/menu/home');
           }

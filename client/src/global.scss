@@ -49,6 +49,16 @@ ion-tabs {
     }
 }
 
+/* style of alerts */
+.order-alert {
+    text-align: center;
+
+    .order-alert-button {
+        color: var(--ion-color-button) !important;
+    }
+    
+}
+
 /* set Media Queries for different display sizes and orientation of smartphone */
 @media screen and(orientation: landscape) {
     ion-toast {

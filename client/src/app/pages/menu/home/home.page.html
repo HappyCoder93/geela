@@ -17,7 +17,8 @@
             </div>
             <div class="order-container" *ngIf="order$ | async as items">
                 <div class="empty-container" *ngIf="isEmptyOrders">
-                    <p>No recent order  </p>
+                    <!-- container will only be displayed when there is no order recent order -->
+                    <p>No recent order yet</p>
                 </div>
                 <div class="content-container" *ngIf="!isEmptyOrders">
                     <h1>Recent orders</h1>
