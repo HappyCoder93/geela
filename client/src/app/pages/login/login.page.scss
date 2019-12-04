@@ -42,7 +42,8 @@ ion-content {
                         left: 26px;
                     }       
                 }
-    
+                
+                // css classes for different buttons
                 .btn-google {
                     --background: var(--ion-color-google);
                 }
@@ -78,10 +79,10 @@ ion-content {
                 }
             }
         }   
-    }
+    }   
     
     /* set Media Queries for different display sizes and orientation of smartphone */
-    @media screen and(orientation: landscape) {
+    @media screen and(orientation: landscape) { 
         .wrapper-container {
             .content-container {
                 .header-container {
@@ -91,19 +92,19 @@ ion-content {
                         width: 336px;
                     }
                 }
-    
+        
                 .button-container {
                     width: 50%;
-    
+        
                     ion-button {
                         margin-bottom: 14px;
                         height: 42px;
                     }
                 }
-    
+        
                 .signup-container {
                     margin-top: 2.5%;
-    
+        
                     ion-grid {
                         ion-row {
                             ion-col {
@@ -113,14 +114,14 @@ ion-content {
                             }
                         }
                     }
-    
+
                     p {
                         margin-top: 2%;
                     }
                 }
             }
         }
-
+        
         // Media Query for iPhone 5/SE (very small display size)
         @media screen and(max-width: 568px) {
             .wrapper-container {
@@ -145,7 +146,7 @@ ion-content {
                     }
                 }
             }
-        }
+        }    
     }
 }
 

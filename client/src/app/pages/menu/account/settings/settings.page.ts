@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsButton } from '../../../../shared/models/SettingsButton';
 import { UserService } from '../../../../shared/services/user.service';
 
 @Component({

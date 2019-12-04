@@ -27,6 +27,10 @@ export class ProfilePage implements OnInit {
   ngOnInit() { 
     this.getProfile();
   }
+
+  ionViewWillEnter() {
+    this.getProfile();
+  }
   
   async getProfile() {
     await this.storage.get('uid').then(uid => {

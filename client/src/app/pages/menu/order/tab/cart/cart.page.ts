@@ -3,8 +3,7 @@ import { TabPage } from '../tab.page';
 import { IonList } from '@ionic/angular';
 import { OrderService } from '../../../../../shared/services/order.service';
 import { Product } from '../../../../../shared/models/Product';
-import { Router } from '@angular/router';
-import { ToastService } from '../../../../../shared/services/toast.service';
+import { AlertService } from '../../../../../shared/services/alert.service';
 
 @Component({
   selector: 'app-cart',
@@ -16,15 +15,14 @@ export class CartPage implements OnInit {
   public products: Product[] = [];
   public isEmptyProducts: boolean;
   public totalPrice: number;
-  public btnText: string = "Order";
+  public btnText: string = "Order Now";
 
   @ViewChild('list', {static: false})list: IonList;
 
   constructor(
       private tabPage: TabPage, 
       private orderService: OrderService, 
-      private router: Router,
-      private toastService: ToastService
+      private alertService: AlertService
     ) 
     {
       this.isEmptyProducts = true;
@@ -64,7 +62,6 @@ export class CartPage implements OnInit {
   // create order and send order to Firestore
   orderProducts(products: Product[], totalPrice: number) {
     this.orderService.createOrderDocument(this.tabPage.param, products, totalPrice);
-    this.router.navigateByUrl('/menu/home');
-    this.toastService.orderSuccess();
+    this.alertService.orderAlert();
   }
 }

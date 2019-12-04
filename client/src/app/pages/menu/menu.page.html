@@ -4,7 +4,12 @@
 <ion-split-pane>
         <ion-menu class="sidemenu" contentId="sidemenu">
             <ion-content>
+                <!--
                 <h1>{{ title }}</h1>
+                -->
+                <div class="header-container">
+                    <img src="../../../assets/img/logo.svg"/>
+                </div>
                 <ion-list *ngFor="let page of pages" lines="full">
                     <ion-menu-toggle autoHide="false">
                         <ion-item [routerLink]="page.url">
@@ -14,8 +19,7 @@
                     </ion-menu-toggle>
                 </ion-list>
                 <div class="footer-container">
-                    <p>yourMeal</p>
-                    <p class="copyright">&copy; 2019</p>
+                    <p>&copy; 2019</p>
                 </div>
             </ion-content>
         </ion-menu>

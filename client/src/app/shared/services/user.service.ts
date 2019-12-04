@@ -17,11 +17,11 @@ export class UserService {
       private firestore: AngularFirestore, 
       private fireAuth: AngularFireAuth, 
       private toastService: ToastService,
+      private alertService: AlertService,
       private router: Router,
       private storage: Storage
     ) { }
 
-  // create a 
   createProfileDocument(uid: string) {
     this.firestore.collection('profile').doc<Profile>(`${uid}`).set({
       user_id: `${uid}`,
@@ -49,7 +49,7 @@ export class UserService {
 
   logout() {
     this.fireAuth.auth.signOut().then(() => {
-      console.log("User logged out!");
+      console.log('User logged out');
 
       this.storage.get('uid').then(() => {
         this.storage.clear();
@@ -59,9 +59,10 @@ export class UserService {
     });
   }
 
+  // deleteAccount deletes authenticated user with collection profile
   deleteAccount() {
     this.fireAuth.auth.currentUser.delete().then(() => {
-      console.log("User deleted!");
+      console.log('User deleted');
 
       this.storage.get('uid').then(user_id => {
         this.user_id = user_id;

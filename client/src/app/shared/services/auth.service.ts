@@ -33,23 +33,24 @@ export class AuthService {
       private router: Router
     ) { }
 
-  // createUserWithEmailAnd Password
+  // createUserWithEmailAndPassword
   async signupWithEmailAndPassword(user: AuthUser) {
     await this.fireAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(res => {
         if(res.user) {
           this.color = '#292929';
 
-          // if user successfully signed up -> new document of collection profile (with uid) will be created
+          // if user successfully signed up, a new collection profile will be created
           this.userService.createProfileDocument(res.user.uid);
           this.storage.set('uid', res.user.uid).then(() => {
+            this.toastService.signUpSuccess();
             this.router.navigateByUrl('/login/mail');
           });
         }
       }).catch(err => {
         console.log(err);
         
-        // catch different error codes
+        // catch error codes
         if(err.code == this.errCode.invalidEmail || err.code == this.errCode.weakPassword) {
           this.toastService.invalidSignupLogin('signup');
         }
@@ -68,7 +69,7 @@ export class AuthService {
         if(res.user) {
           this.color = '#292929';
 
-          // clear storage and save uid to storage before forwarding to page home (URL: /menu/home)
+          // clear storage and save uid before forwarding to page home
           this.storage.clear().then(() => {
             this.storage.set('uid', res.user.uid).then(() => {
               this.router.navigateByUrl('/menu/home');
@@ -78,7 +79,7 @@ export class AuthService {
       }).catch(err => {
         console.log(err);
 
-        // catch errors (error codes)
+        // catch error codes
         if(err.code == this.errCode.invalidEmail) {
           this.toastService.invalidSignupLogin('login');
         }

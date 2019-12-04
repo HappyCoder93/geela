@@ -4,6 +4,7 @@ export interface Order {
     products: Products[];
     price: number;
     status: string;
+    date: string;
     user_id: string;
     restaurant_id: string;
 }

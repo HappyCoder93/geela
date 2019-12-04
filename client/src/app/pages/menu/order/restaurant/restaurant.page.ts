@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class RestaurantPage implements OnInit {
   public title: string = "Restaurants";
-  public param: number;
+  public param: string;
   public restaurants$: Observable<Restaurant[]>;
 
   constructor(private activatedRoute: ActivatedRoute, private locationService: LocationService, private router: Router) { }
@@ -23,13 +23,13 @@ export class RestaurantPage implements OnInit {
 
   getRestaurants() {
     this.activatedRoute.paramMap.subscribe(param => {
-      this.param = +param.get('venue_id');
+      this.param = param.get('venue_id');
     });
 
     this.restaurants$ = this.locationService.getRestaurants(this.param);
   }
 
-  goToItems(restaurant_id: number) {
+  goToItems(restaurant_id: string) {
     this.router.navigateByUrl(`menu/order/restaurant/${restaurant_id}`);
   }
 }

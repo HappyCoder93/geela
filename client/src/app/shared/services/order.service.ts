@@ -16,6 +16,9 @@ export class OrderService {
   public order_id: number;
   public totalPrice: number;
   public user_id: string;
+  public date: string;
+  public recentDate: string;
+  public difference: number;
 
   constructor(private storage: Storage, private firestore: AngularFirestore) { 
     this.getPrice().then(price => {
@@ -92,7 +95,8 @@ export class OrderService {
   // createOrderDocument (collection order) create a new order document for Firestore
   createOrderDocument(restaurant_id: string, products: Product[], totalPrice: number) {
     this.order_id = Date.now();
-
+    this.createDate();
+  
     this.storage.get('uid').then(user_id => {
       this.user_id = user_id;
 
@@ -100,6 +104,7 @@ export class OrderService {
         products: products,
         price: totalPrice,
         status: "ordered",
+        date: this.date,
         user_id: this.user_id,
         restaurant_id: restaurant_id
       });
@@ -112,5 +117,32 @@ export class OrderService {
   getOrder(user_id: string): Observable<Order[]> {
     return this.firestore.collection<Order>('order', ref => ref.where('user_id', '==', user_id)
       .where('status', '==', 'ordered')).valueChanges();
+  }
+
+  getRecentOrder(user_id: string): Observable<Order[]> {
+    return this.firestore.collection<Order>('order', ref => ref.where('user_id', '==', user_id).orderBy('date', 'desc').limit(1)).valueChanges();
+  }
+
+  createDate() {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0');
+    let yyyy = today.getFullYear();
+
+    this.date = mm + '/' + dd + '/' + yyyy;
+  }
+
+  checkRecentDate(date: string) {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0');
+    let yyyy = today.getFullYear();
+
+    this.recentDate = mm + '/' + dd + '/' + yyyy;
+
+    let splitString =  date.split("/", 1);
+    let tmpValue = parseInt(splitString[0]);
+
+    return parseInt(mm) % tmpValue;
   }
 }

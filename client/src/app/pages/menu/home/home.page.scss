@@ -39,6 +39,51 @@ ion-content {
                     }
                 }
             }
+
+            .order-container {
+                position: absolute;
+                bottom: 20px;
+                width: 100%;
+
+                .empty-container {
+                    
+                    p {
+                        text-align: center;
+                        color: #959595;
+                    }
+                }
+
+                .content-container {
+                    h1 {
+                        margin: 0px 0px 10px 0px;
+                        text-align: center;
+                        font-size: 18px;
+                    }
+
+                    .slider-container {
+                        ion-slides {
+                            ion-slide {
+                                ion-col {
+                                    padding: 0;
+                
+                                    ion-card {
+                                        background: var(--ion-color-secTxtColor);
+                
+                                        ion-card-title {
+                                            padding: 10px;
+                                            font-size: 16px;
+                                        }
+                
+                                        ion-card-subtitle {
+                                            padding: 10px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    }
+            }
         }
     }
 }
@@ -56,6 +101,10 @@ ion-content {
                     width: 50% !important;
                 }
             }
+            
+            .order-container {
+                display: none !important;
+            }    
         }
     }
 }

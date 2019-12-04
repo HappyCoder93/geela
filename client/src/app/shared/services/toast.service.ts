@@ -17,10 +17,10 @@ export class ToastService {
       duration: 1500
     });
 
-    toast.present();
+    await toast.present();
   }
   
-   // user already exists (user have the same email address)
+   // user already exists (user wants to sign up with same email address)
   async userAlreadyExists() {
     const toast = await this.toastController.create({
       position: 'bottom',
@@ -28,7 +28,7 @@ export class ToastService {
       duration: 1500
     });
 
-    toast.present();
+    await toast.present();
   }
 
   // user cannot be found (user does not exist)
@@ -39,7 +39,17 @@ export class ToastService {
       duration: 1500
     });
 
-    toast.present();
+    await toast.present();
+  }
+
+  async signUpSuccess() {
+    const toast = await this.toastController.create({
+      position: 'bottom',
+      message: 'Sign up successful',
+      duration: 1500
+    });
+
+    await toast.present();
   }
 
   // firstname, lastname and image were updated
@@ -47,17 +57,6 @@ export class ToastService {
     const toast = await this.toastController.create({
       position: 'bottom',
       message: 'Profile updated',
-      duration: 1500
-    });
-
-    toast.present();
-  }
-
-  // order successful sent
-  async orderSuccess() {
-    const toast = await this.toastController.create({
-      position: 'bottom',
-      message: 'Order sent',
       duration: 1500
     });
 

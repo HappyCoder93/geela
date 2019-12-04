@@ -18,7 +18,7 @@ export class LocationService {
   }
 
   // get all restauraunts
-  getRestaurants(restaurant_id: number): Observable<Restaurant[]> {
+  getRestaurants(restaurant_id: string): Observable<Restaurant[]> {
     return this.firestore.collection<Restaurant>('restaurant', ref => ref.where('venues', 'array-contains', restaurant_id)).valueChanges();
   }
 }

@@ -27,7 +27,7 @@ export class ShowOrderPage implements OnInit {
       this.user_id = user_id
       this.order$ = this.orderService.getOrder(this.user_id);
 
-      this.order$.subscribe((order) => {
+      this.order$.subscribe(order => {
         this.length = order.length;
         
         if(this.length == 0) {
