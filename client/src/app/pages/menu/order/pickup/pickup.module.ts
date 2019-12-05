@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
-import { IonicModule } from '@ionic/angular';
-
+import { SharedModule } from '../../../../shared/shared.module';
 import { PickupPage } from './pickup.page';
 
 const routes: Routes = [
@@ -16,11 +12,12 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ],
-  declarations: [PickupPage]
+  declarations: [
+    PickupPage
+  ]
 })
-export class PickupPageModule {}
+
+export class PickupPageModule { }
