@@ -23,10 +23,6 @@ const routes: Routes = [
         loadChildren: () => import('./tab/tab.module').then(m => m.TabPageModule)
       },
       {
-        path: 'pickup',
-        loadChildren: () => import('./pickup/pickup.module').then(m => m.PickupPageModule)
-      },
-      {
         // wildcard (invalid URL will forward user to page venue)
         path: '**',
         redirectTo: 'venue',

@@ -4,11 +4,10 @@
 
 <!-- template of cart.page -->
 <ion-content class="ion-padding">
-    <!-- container will only be displayed when cart is empty -->
     <div class="empty-container" *ngIf="isEmptyProducts">
         <div class="content-container">
             <img src="../../../../../../assets/icon/cart.svg"/>
-            <p>Cart is empty</p>
+            <p>your cart is empty</p>
         </div>
     </div>
     <div class="wrapper-container" *ngIf="!isEmptyProducts">

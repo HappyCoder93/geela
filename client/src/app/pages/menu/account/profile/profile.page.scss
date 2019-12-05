@@ -10,9 +10,14 @@ ion-content {
     .wrapper-container {
         .content-container {
             .header-container {
+                margin: 0% 0% 8% 0%;
                 text-align: center; 
-                margin: 5% 0% 8% 0%;
     
+                h1 {
+                    margin-bottom: 24px;
+                    font-size: 21px;
+                }
+
                 img {
                     width: 162px;
                 }
@@ -24,7 +29,7 @@ ion-content {
                 width: 75%;
     
                 .item-firstname {
-                    margin-bottom: 12px;
+                    margin-bottom: 14px;
                     box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12);
                     border-radius: 32px;
     
@@ -40,7 +45,7 @@ ion-content {
                 }
     
                 .item-lastname {
-                    margin-bottom: 12px;
+                    margin-bottom: 14px;
                     box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12);
                     border-radius: 32px;
     
@@ -91,8 +96,8 @@ ion-content {
                 width: 80%;
 
                 .header-container {
-                    margin: 0 !important;   
-    
+                    margin: 0 !important;  
+
                     img {
                         width: 148x;
                     }
@@ -100,10 +105,6 @@ ion-content {
 
                 .form-container {
                     width: 50%;
-                }
-
-                ion-fab {
-                    //display: none;
                 }
             }
         }

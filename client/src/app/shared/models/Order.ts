@@ -2,6 +2,7 @@
 
 export interface Order {
     products: Products[];
+    pickup_point: string;
     price: number;
     status: string;
     date: string;

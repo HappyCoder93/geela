@@ -7,6 +7,7 @@ import { Order } from '../models/Order';
  
 const ORDER_KEY = 'order';
 const TOTAL_PRICE = 'total';
+const PICKUP = 'pickup';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ const TOTAL_PRICE = 'total';
 
 export class OrderService {
   public order_id: number;
+  public pickupStation: string;
   public totalPrice: number;
   public user_id: string;
   public date: string;
@@ -100,13 +102,18 @@ export class OrderService {
     this.storage.get('uid').then(user_id => {
       this.user_id = user_id;
 
-      this.firestore.collection('order').doc<Order>(`${this.order_id}`).set({
-        products: products,
-        price: totalPrice,
-        status: "ordered",
-        date: this.date,
-        user_id: this.user_id,
-        restaurant_id: restaurant_id
+      this.storage.get('pickup').then(pickup => {
+        this.pickupStation = pickup;
+
+        this.firestore.collection('order').doc<Order>(`${this.order_id}`).set({
+          products: products,
+          pickup_point: this.pickupStation,
+          price: totalPrice,
+          status: "ordered",
+          date: this.date,
+          user_id: this.user_id,
+          restaurant_id: restaurant_id
+        });
       });
     });
 
@@ -144,5 +151,9 @@ export class OrderService {
     let tmpValue = parseInt(splitString[0]);
 
     return parseInt(mm) % tmpValue;
+  }
+
+  setPickupStation(pickupStation: string) {
+    this.storage.set(PICKUP, pickupStation);
   }
 }
