@@ -21,9 +21,6 @@
                     <p>No recent order yet</p>
                 </div>
                 <div class="content-container" *ngIf="!isEmptyOrders">
-                    <div class="status-container" *ngFor="let item of items">
-                        <p>Current order status: {{ item.status }}</p>
-                    </div>
                     <h1>Your recent order</h1>
                     <div class="slider-container" *ngFor="let item of items">
                         <ion-slides [options]="sliderConfig" >
