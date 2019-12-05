@@ -123,7 +123,7 @@ export class OrderService {
 
   getOrder(user_id: string): Observable<Order[]> {
     return this.firestore.collection<Order>('order', ref => ref.where('user_id', '==', user_id)
-      .where('status', '==', 'ordered')).valueChanges();
+      .where('status', '==', 'ordered')).valueChanges()
   }
 
   getRecentOrder(user_id: string): Observable<Order[]> {

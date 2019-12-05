@@ -29,4 +29,14 @@ export class AlertService {
 
     await alert.present();
   }
+
+  async deliveredAlert() {
+    const alert = await this.alertController.create({
+      header: 'Delivered',
+      message: 'Order was delivered',
+      cssClass: 'order-alert'
+    })
+
+    await alert.present();
+  }
 }
